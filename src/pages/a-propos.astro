@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+---
+
+<Base title="À propos" description="Qui est Théo Grosjean : étudiant ingénieur en systèmes embarqués, fondateur de CoreXtension, ambassadeur FabLab.">
+  <section class="intro">
+    <div class="eyebrow">À propos</div>
+    <h1 class="display">Apprendre en construisant</h1>
+  </section>
+
+  <div class="layout">
+    <div class="ph portrait">[Portrait]</div>
+    <div class="prose">
+      <p class="lead">
+        Je suis Théo, étudiant en ING4 Systèmes embarqués à l'ECE Paris. J'aime comprendre un système en entier, de la
+        carte électronique jusqu'au serveur qui sert l'application.
+      </p>
+      <p>
+        Ce qui me caractérise, c'est ma capacité à apprendre vite un nouveau domaine. Parti de connaissances limitées en
+        Linux lors de mon stage à l'Institut Pasteur, j'ai consolidé ces bases en hébergeant mes propres services. J'ai
+        appris le développement full-stack en créant NoteXtension, aujourd'hui utilisé par plus de 600 étudiants. Avec
+        RAIM, j'ai conçu mes premières cartes électroniques.
+      </p>
+      <p>
+        Au FabLab de l'ECE, je coordonne les événements avec six autres ambassadeurs et j'anime des formations entre pairs :
+        impression 3D, découpe laser, fabrication de PCB. Expliquer une technique à quelqu'un d'autre reste la meilleure
+        façon de vérifier que je l'ai comprise.
+      </p>
+      <h2>Ce que je recherche</h2>
+      <p>
+        Un stage de 4 à 5 mois débutant entre le 19 avril et le 17 mai 2027, dans les systèmes embarqués. Le secteur de la
+        défense m'attire particulièrement ; je suis aussi ouvert à l'aéronautique, au spatial, à la robotique, aux objets
+        connectés et aux télécommunications.
+      </p>
+      <h2>En dehors de l'ingénierie</h2>
+      <p>
+        La <strong>photographie</strong> (paysages, portraits et retouche), et l'investissement en bourse et dans
+        l'immobilier sur le moyen et long terme.
+      </p>
+      <div class="actions">
+        <a class="btn btn--solid" href="/contact/">Me contacter</a>
+        <a class="btn" href={site.cv}>Voir le CV</a>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 40px; }
+  h1 { margin: 0; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; }
+  .layout { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
+  .portrait { flex: 1 1 300px; max-width: 420px; aspect-ratio: 4 / 5; border-radius: var(--radius); }
+  .layout .prose { flex: 999 1 480px; min-width: 0; }
+  .prose .lead { color: var(--fg); max-width: none; margin-bottom: 24px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+</style>

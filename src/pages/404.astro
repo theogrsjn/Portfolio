@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Page introuvable">
+  <section class="nf">
+    <div class="eyebrow">Erreur 404</div>
+    <h1 class="display">Page introuvable<span>.</span></h1>
+    <p class="lead">Cette page n'existe pas ou a été déplacée.</p>
+    <div><a class="btn btn--solid" href="/">Retour à l'accueil</a></div>
+  </section>
+</Base>
+
+<style>
+  .nf { display: flex; flex-direction: column; gap: 24px; padding: clamp(48px, 10vw, 120px) 0; }
+  h1 { margin: 0; font-size: clamp(48px, 9vw, 112px); font-weight: 900; letter-spacing: -0.045em; line-height: 0.9; }
+  h1 span { color: var(--accent); }
+</style>

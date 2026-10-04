@@ -1,0 +1,119 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import StatusTag from "../../components/StatusTag.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projets");
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+interface Props {
+  project: CollectionEntry<"projets">;
+}
+
+const { project } = Astro.props;
+const d = project.data;
+const { Content } = await render(project);
+---
+
+<Base title={d.title} description={d.summary}>
+  <a class="back mono" href="/projets/">← Tous les projets</a>
+
+  <header class="head">
+    <div class="top">
+      <span class="eyebrow">{d.eyebrow}</span>
+      <StatusTag status={d.status} label={d.statusLabel} />
+    </div>
+    <h1 class="display">{d.title}</h1>
+    <p class="lead">{d.summary}</p>
+  </header>
+
+  <div class="ph cover">{d.cover}</div>
+
+  <div class="layout">
+    <aside class="card meta">
+      <dl>
+        <div><dt class="mono muted">Rôle</dt><dd>{d.role}</dd></div>
+        <div><dt class="mono muted">Période</dt><dd>{d.period}</dd></div>
+        <div>
+          <dt class="mono muted">Technologies</dt>
+          <dd class="pills">{d.stack.map((s) => <span class="pill">{s}</span>)}</dd>
+        </div>
+        {d.links && (
+          <div>
+            <dt class="mono muted">Liens</dt>
+            <dd class="links">
+              {d.links.map((l) => <a href={l.url} rel="noopener" target="_blank">{l.label} ↗</a>)}
+            </dd>
+          </div>
+        )}
+      </dl>
+    </aside>
+
+    <div class="main">
+      {d.facts && (
+        <div class="row facts">
+          {d.facts.map((f) => (
+            <div class="card">
+              <div class="display fact">{f.value}</div>
+              <div class="mono muted small">{f.label}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {d.products && (
+        <div class="row products">
+          {d.products.map((p) => (
+            <div class="card product">
+              <div class="display pname">{p.name}</div>
+              <p>{p.desc}</p>
+              {p.url && <a href={p.url} rel="noopener" target="_blank">{new URL(p.url).host} ↗</a>}
+            </div>
+          ))}
+        </div>
+      )}
+
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .back { display: inline-block; margin-top: 24px; font-size: 14px; color: var(--muted); text-decoration: none; }
+  .back:hover { color: var(--fg); }
+  .head { display: flex; flex-direction: column; gap: 20px; padding: 24px 0 40px; }
+  .top { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: clamp(48px, 9vw, 112px); font-weight: 900; letter-spacing: -0.045em; line-height: 0.9; }
+  .cover { min-height: clamp(260px, 40vw, 520px); border-radius: var(--radius); }
+
+  .layout { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start; }
+  .meta { flex: 1 1 280px; max-width: 100%; position: sticky; top: 24px; }
+  @media (max-width: 900px) { .meta { position: static; } }
+  .main { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+  dl { margin: 0; display: flex; flex-direction: column; gap: 20px; }
+  dt { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  dd { margin: 0; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pills .pill { font-size: 13px; padding: 3px 10px; }
+  .links { display: flex; flex-direction: column; gap: 4px; }
+
+  .facts > :global(*) { flex-basis: 180px; }
+  .fact { font-size: clamp(36px, 4vw, 48px); }
+  .small { font-size: 13px; }
+  .products > :global(*) { flex-basis: 260px; }
+  .pname { font-size: 22px; font-stretch: 112%; }
+  .product p { margin: 0; color: var(--text); font-size: 15px; }
+
+  .prose :global(blockquote) {
+    margin: 0 0 24px;
+    padding: 16px 20px;
+    background: var(--warn-bg);
+    color: var(--warn-fg);
+    border-radius: var(--radius-sm);
+  }
+  .prose :global(blockquote p) { margin: 0; }
+</style>

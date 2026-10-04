@@ -1,0 +1,10 @@
+---
+interface Props {
+  status: "en-cours" | "termine" | "en-ligne";
+  label?: string;
+}
+const { status, label } = Astro.props;
+const defaults = { "en-cours": "En cours", termine: "Terminé", "en-ligne": "En ligne" };
+---
+
+<span class:list={["tag", status === "en-cours" ? "tag--warn" : "tag--ok"]}>{label ?? defaults[status]}</span>

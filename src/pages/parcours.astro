@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import { experience, education, skills, languages, site, type Entry } from "../data/site";
+
+const blocks: { title: string; entries: Entry[] }[] = [
+  { title: "Expérience", entries: experience },
+  { title: "Formation", entries: education },
+];
+---
+
+<Base title="Parcours" description="Expériences, formation et compétences de Théo Grosjean, étudiant ingénieur en systèmes embarqués.">
+  <section class="intro">
+    <div class="eyebrow">Parcours</div>
+    <h1 class="display">Expériences et formation</h1>
+    <div class="actions">
+      <a class="btn btn--solid" href={site.cv}>Télécharger le CV</a>
+    </div>
+  </section>
+
+  {blocks.map((b) => (
+    <>
+      <div class="section-head"><h2 class="display">{b.title}</h2></div>
+      <ol class="timeline">
+        {b.entries.map((e) => (
+          <li>
+            <span class="mono muted period">{e.period}</span>
+            <div class="content">
+              <h3>{e.org}{e.place && <span class="muted place"> · {e.place}</span>}</h3>
+              <div class="role">{e.title}</div>
+              <ul>{e.points.map((pt) => <li>{pt}</li>)}</ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
+  ))}
+
+  <div class="section-head"><h2 class="display">Compétences</h2></div>
+  <div class="row skills">
+    {skills.map((s) => (
+      <div class="card">
+        <div class="eyebrow">{s.group}</div>
+        <div class="pills">{s.items.map((i) => <span class="pill">{i}</span>)}</div>
+      </div>
+    ))}
+  </div>
+
+  <div class="section-head"><h2 class="display">Langues</h2></div>
+  <div class="row">
+    {languages.map((l) => (
+      <div class="card">
+        <div class="display lang">{l.name}</div>
+        <div class="mono muted">{l.level}</div>
+      </div>
+    ))}
+  </div>
+</Base>
+
+<style>
+  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 8px; }
+  h1 { margin: 0; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; }
+  .actions { display: flex; gap: 12px; }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline > li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 40px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .period { flex: 0 0 220px; font-size: 14px; padding-top: 4px; }
+  .content { flex: 1 1 420px; min-width: 0; }
+  h3 { margin: 0; font-size: 21px; }
+  .place { font-weight: 400; }
+  .role { font-weight: 500; color: var(--accent); margin-top: 2px; }
+  .content ul { margin: 10px 0 0; padding-left: 1.1em; color: var(--text); }
+  .content li { margin: 4px 0; }
+  .skills > :global(*) { flex-basis: 260px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lang { font-size: 28px; font-stretch: 112%; }
+</style>

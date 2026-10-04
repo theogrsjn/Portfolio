@@ -1,0 +1,79 @@
+---
+import Base from "../layouts/Base.astro";
+
+const layers = [
+  { name: "Cloudflare", role: "DNS et exposition des services vers Internet, protection en frontal." },
+  { name: "Réseau Ubiquiti", role: "Routage, Wi-Fi et segmentation du réseau local." },
+  { name: "Proxmox", role: "Hyperviseur : machines virtuelles et conteneurs sur le serveur." },
+  { name: "Docker", role: "Chaque service tourne dans son conteneur, avec sa propre base PostgreSQL." },
+  { name: "Grafana", role: "Supervision : état des machines et des services." },
+];
+---
+
+<Base title="Homelab" description="L'infrastructure réseau et serveur auto-hébergée de Théo Grosjean : Proxmox, Docker, Cloudflare, Ubiquiti, Grafana.">
+  <section class="intro">
+    <div class="eyebrow">Homelab</div>
+    <h1 class="display">Mon infrastructure</h1>
+    <p class="lead">Les sites CoreXtension et ce portfolio tournent sur un serveur que j'administre chez moi.</p>
+  </section>
+
+  <div class="layout">
+    <div class="prose">
+      <h2>Pourquoi l'auto-hébergement</h2>
+      <p>
+        Mon stage à l'Institut Pasteur m'a fait découvrir l'administration de serveurs Linux sous RHEL 8. J'ai voulu continuer
+        à pratiquer : héberger mes propres services m'oblige à gérer le réseau, la sécurité, les mises à jour et la
+        supervision, comme en production.
+      </p>
+      <h2>Les principes</h2>
+      <ul>
+        <li><strong>Isolation</strong> : un conteneur et une base de données par service.</li>
+        <li><strong>Exposition minimale</strong> : rien n'est ouvert directement, tout passe par Cloudflare.</li>
+        <li><strong>Supervision</strong> : des tableaux de bord Grafana pour voir l'état de l'infrastructure.</li>
+      </ul>
+      <p class="muted note">Pour des raisons de sécurité, cette page ne détaille ni la topologie ni les adresses du réseau.</p>
+    </div>
+
+    <ol class="stack" aria-label="Couches de l'infrastructure, de l'extérieur vers l'intérieur">
+      <li class="edge mono muted">Internet</li>
+      {layers.map((l) => (
+        <li class="card layer">
+          <div class="display lname">{l.name}</div>
+          <p>{l.role}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 40px; }
+  h1 { margin: 0; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; }
+  .layout { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
+  .layout .prose { flex: 1 1 480px; min-width: 0; }
+  .layout .prose h2:first-child { margin-top: 0; }
+  .note { font-size: 15px; }
+  .stack {
+    flex: 1 1 380px;
+    min-width: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .edge { text-align: center; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; padding-bottom: 4px; }
+  .layer { position: relative; gap: 6px; padding: 18px 22px; }
+  .layer + .layer::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 1.5px;
+    height: 10px;
+    background: var(--line);
+  }
+  .lname { font-size: 20px; font-stretch: 112%; }
+  .layer p { margin: 0; color: var(--text); font-size: 15px; }
+</style>

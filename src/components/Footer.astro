@@ -1,0 +1,45 @@
+---
+import { site } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="mono muted">Écrivez-moi</div>
+  <a class="mail display" href={`mailto:${site.email}`}>{site.email}</a>
+  <div class="meta mono muted">
+    <span>© {year} {site.name}</span>
+    <span class="links">
+      <a href={site.linkedin} rel="me noopener" target="_blank">LinkedIn ↗</a>
+      <a href={site.cv}>CV (PDF)</a>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: clamp(64px, 8vw, 104px);
+    padding: 40px 0 48px;
+    border-top: 1.5px solid var(--line);
+  }
+  .mono { font-size: 14px; }
+  .mail {
+    font-size: clamp(30px, 6vw, 56px);
+    color: var(--fg);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .mail:hover { color: var(--accent); }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+  }
+  .links { display: flex; gap: 20px; }
+  .links a { color: var(--muted); }
+  .links a:hover { color: var(--fg); }
+</style>

@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { schoolProjects } from "../../data/site";
+
+const projects = (await getCollection("projets")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Projets" description="Projets de Théo Grosjean : électronique embarquée, véhicule hydrogène, logiciels full-stack et infrastructure.">
+  <section class="intro">
+    <div class="eyebrow">Projets</div>
+    <h1 class="display">Ce que je construis</h1>
+    <p class="lead">Des cartes électroniques, un véhicule à hydrogène, des logiciels utilisés par des centaines d'étudiants.</p>
+  </section>
+
+  <div class="row grid">
+    {projects.map((p) => <ProjectCard project={p} />)}
+  </div>
+
+  <div class="section-head">
+    <h2 class="display">Projets d'études</h2>
+  </div>
+  <ul class="school">
+    {schoolProjects.map((p) => (
+      <li>
+        <span class="title">{p.title}</span>
+        <span class="desc">{p.desc}</span>
+        <span class="mono muted ctx">{p.context}</span>
+      </li>
+    ))}
+  </ul>
+</Base>
+
+<style>
+  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 40px; }
+  h1 { margin: 0; font-size: clamp(48px, 8vw, 96px); font-weight: 900; letter-spacing: -0.04em; }
+  .grid > :global(*) { flex-basis: 380px; }
+  .school { list-style: none; margin: 0; padding: 0; }
+  .school li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 32px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: baseline;
+  }
+  .title { flex: 0 1 280px; font-weight: 600; }
+  .desc { flex: 1 1 360px; min-width: 0; color: var(--text); }
+  .ctx { font-size: 13px; }
+</style>

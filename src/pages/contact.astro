@@ -1,0 +1,60 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+---
+
+<Base title="Contact" description="Contacter Théo Grosjean pour un stage en systèmes embarqués à partir d'avril 2027.">
+  <section class="intro">
+    <div class="eyebrow">Contact</div>
+    <h1 class="display">Parlons de votre projet</h1>
+    <p class="lead">Je réponds en général sous 48 heures.</p>
+  </section>
+
+  <div class="row cards">
+    <div class="card mail-card">
+      <div class="eyebrow">Email</div>
+      <a class="display mail" href={`mailto:${site.email}`}>{site.email}</a>
+      <div>
+        <button class="btn" type="button" data-copy={site.email}>Copier l'adresse</button>
+        <span class="mono muted copied" role="status" aria-live="polite"></span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="eyebrow">LinkedIn</div>
+      <a class="display small" href={site.linkedin} rel="me noopener" target="_blank">in/theogrsjn ↗</a>
+    </div>
+    <div class="card card--accent">
+      <div class="display small">{site.availability.title}</div>
+      <p>{site.availability.detail}</p>
+      <p>{site.availability.sectors}</p>
+    </div>
+  </div>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const status = btn.parentElement?.querySelector(".copied");
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? "");
+        if (status) status.textContent = "Adresse copiée";
+      } catch {
+        if (status) status.textContent = "Copie impossible, sélectionnez l'adresse";
+      }
+    });
+  });
+</script>
+
+<style>
+  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 40px; }
+  h1 { margin: 0; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; }
+  .cards > :global(*) { flex-basis: 300px; }
+  .mail-card { flex-grow: 2; }
+  .mail { font-size: clamp(24px, 3.4vw, 40px); color: var(--fg); text-decoration: none; overflow-wrap: anywhere; }
+  .mail:hover { color: var(--accent); }
+  .small { font-size: 26px; color: inherit; text-decoration: none; }
+  a.small { color: var(--fg); }
+  a.small:hover { color: var(--accent); }
+  .copied { margin-left: 12px; font-size: 13px; }
+  .card--accent p { margin: 0; font-size: 15px; }
+</style>

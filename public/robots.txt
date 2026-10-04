@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theogrsjn.fr/sitemap-index.xml
