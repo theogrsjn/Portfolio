@@ -24,6 +24,16 @@ sont définis dans `docker/security-headers.conf`.
 
 Mise à jour du site : `git pull && docker compose up -d --build`.
 
+### CV
+
+Le CV (`public/cv/TheoGROSJEAN_CV.pdf`) n'est pas versionné, car il contient des données personnelles et le dépôt est public.
+Avant le premier build, et à chaque nouvelle version du CV, le copier sur le serveur :
+
+```bash
+scp TheoGROSJEAN_CV.pdf serveur:/chemin/vers/Portfolio/public/cv/
+docker compose up -d --build
+```
+
 ## Où modifier le contenu
 
 | Quoi | Où |

@@ -1,1 +1,2 @@
 Déposer ici le CV sous le nom TheoGROSJEAN_CV.pdf (lien utilisé par le site : /cv/TheoGROSJEAN_CV.pdf).
+Le fichier est exclu de Git (.gitignore) car il contient des données personnelles : le copier directement sur le serveur avant `docker compose up -d --build`.
