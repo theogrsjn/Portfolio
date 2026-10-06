@@ -2,6 +2,7 @@
 import { getCollection, render, type CollectionEntry } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import StatusTag from "../../components/StatusTag.astro";
+import ProjectMedia from "../../components/ProjectMedia.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projets");
@@ -29,7 +30,7 @@ const { Content } = await render(project);
     <p class="lead">{d.summary}</p>
   </header>
 
-  <div class="ph cover">{d.cover}</div>
+  <ProjectMedia project={project} tall widths={[640, 960, 1280, 1920]} sizes="(min-width: 1320px) 1240px, 100vw" eager />
 
   <div class="layout">
     <aside class="card meta">
@@ -88,7 +89,6 @@ const { Content } = await render(project);
   .head { display: flex; flex-direction: column; gap: 20px; padding: 24px 0 40px; }
   .top { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
   h1 { margin: 0; font-size: clamp(48px, 9vw, 112px); font-weight: 900; letter-spacing: -0.045em; line-height: 0.9; }
-  .cover { min-height: clamp(260px, 40vw, 520px); border-radius: var(--radius); }
 
   .layout { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start; }
   .meta { flex: 1 1 280px; max-width: 100%; position: sticky; top: 24px; }

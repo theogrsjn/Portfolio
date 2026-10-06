@@ -11,6 +11,8 @@ featured: true
 category: Mécanique
 stack: [OnShape, CAO, Pile à combustible hydrogène]
 cover: "[Photo plein cadre : prototype H2GP en piste]"
+image: ../../assets/projets/h2gp-finale.jpg
+imageAlt: "L'équipe ECE Paris H2 Racing célèbre devant le tableau des scores de la finale mondiale du Hydrogen Grand Prix, où l'équipe affiche 520 tours"
 facts:
   - { value: "6e", label: "place à la finale mondiale" }
   - { value: "520", label: "tours en 4 h d'endurance" }

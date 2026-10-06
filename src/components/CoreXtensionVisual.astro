@@ -1,0 +1,77 @@
+---
+// Visuel de l'écosystème CoreXtension : les produits reliés au compte unique.
+interface Props {
+  products: string[];
+}
+const { products } = Astro.props;
+---
+
+<div class="eco" role="img" aria-label={`Écosystème CoreXtension : ${products.join(", ")}, reliés par un compte unique`}>
+  <div class="grid" aria-hidden="true">
+    {products.map((name, i) => (
+      <div class:list={["app", `a${i}`]}>
+        <span class="mono idx">0{i + 1}</span>
+        <span class="display name">{name}</span>
+      </div>
+    ))}
+    <div class="hub">
+      <span class="display hub-name">Core<span>X</span></span>
+      <span class="mono hub-sub">Compte unique · OAuth2/OIDC</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .eco {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 4%, 32px);
+    background:
+      radial-gradient(circle at 1px 1px, var(--line-soft) 1px, transparent 0) 0 0 / 18px 18px,
+      var(--bg);
+  }
+  .grid {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(36px, 9%, 64px) clamp(12px, 4%, 24px);
+  }
+  .app {
+    position: relative;
+    z-index: 1;
+    background: var(--card);
+    border: 1px solid var(--line-soft);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .idx { font-size: 11px; color: var(--muted); }
+  .name { font-size: clamp(14px, 1.7vw, 19px); font-stretch: 105%; overflow-wrap: anywhere; }
+  .hub {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: 999px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 0 0 6px var(--bg);
+  }
+  .hub-name { font-size: 20px; }
+  .hub-name span { opacity: 0.7; }
+  .hub-sub { font-size: 10px; letter-spacing: 0.04em; opacity: 0.85; }
+</style>

@@ -11,6 +11,7 @@ featured: true
 category: Logiciel
 stack: [JavaScript, PHP, PostgreSQL, OAuth2/OIDC, Docker, Extensions navigateur]
 cover: "[Mosaïque de captures des applications]"
+visual: corextension
 facts:
   - { value: "600+", label: "utilisateurs inscrits" }
   - { value: "35+", label: "actifs par jour sur NoteXtension" }

@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import CoreXtensionVisual from "./CoreXtensionVisual.astro";
+
+interface Props {
+  project: CollectionEntry<"projets">;
+  // largeurs générées selon l'emplacement (carte ou page projet)
+  widths: number[];
+  sizes: string;
+  class?: string;
+  eager?: boolean;
+  // grand format (en-tête de page projet)
+  tall?: boolean;
+}
+
+const { project, widths, sizes, class: className, eager = false, tall = false } = Astro.props;
+const { image, imageAlt, imageFit, visual, cover, products } = project.data;
+---
+
+{image ? (
+  <div class:list={["media", `fit-${imageFit}`, { tall }, className]}>
+    <Image
+      src={image}
+      alt={imageAlt ?? ""}
+      widths={widths}
+      sizes={sizes}
+      format="webp"
+      loading={eager ? "eager" : "lazy"}
+      fetchpriority={eager ? "high" : undefined}
+    />
+  </div>
+) : visual === "corextension" ? (
+  <div class:list={["media", "fit-visual", { tall }, className]}>
+    <CoreXtensionVisual products={(products ?? []).map((p) => p.name)} />
+  </div>
+) : (
+  <div class:list={["ph", { tall }, className]}>{cover}</div>
+)}
+
+<style>
+  .media {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    min-height: 200px;
+  }
+  .media :global(img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .fit-cover :global(img) { object-fit: cover; }
+  .fit-contain { background: var(--render-bg); }
+  .fit-contain :global(img) { object-fit: contain; padding: 24px; }
+  .fit-visual { display: flex; }
+  .tall { min-height: clamp(280px, 48vw, 620px); border-radius: var(--radius); }
+</style>

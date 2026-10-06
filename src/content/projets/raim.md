@@ -11,6 +11,9 @@ featured: true
 category: Hardware
 stack: [KiCad, PCB/PCBA, C embarqué, GNSS, LoRa, Radar mmWave, Caméra IR]
 cover: "[Carnet de recherche : croquis, schéma optique]"
+image: ../../assets/projets/raim-cao.png
+imageAlt: "Rendu CAO de RAIM : boîtier noir du viseur avec fenêtre holographique, deux antennes, boutons latéraux et connecteur magnétique"
+imageFit: contain
 facts:
   - { value: "V1", label: "fonctionnelle" }
   - { value: "V2", label: "en conception" }
