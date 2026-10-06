@@ -1,22 +1,59 @@
 ---
-// Visuel de l'écosystème CoreXtension : les produits reliés au compte unique.
+// Visuel de l'écosystème CoreXtension : quatre mini-fenêtres qui flottent,
+// une par produit, autour du compte unique.
 interface Props {
   products: string[];
 }
 const { products } = Astro.props;
+
+const grades = [62, 78, 54, 88, 71, 94];
+// morpion : X gagne sur la diagonale
+const board = ["X", "O", "", "O", "X", "", "", "O", "X"];
 ---
 
-<div class="eco" role="img" aria-label={`Écosystème CoreXtension : ${products.join(", ")}, reliés par un compte unique`}>
-  <div class="grid" aria-hidden="true">
-    {products.map((name, i) => (
-      <div class:list={["app", `a${i}`]}>
-        <span class="mono idx">0{i + 1}</span>
-        <span class="display name">{name}</span>
+<div class="eco" role="img" aria-label={`Aperçu des applications CoreXtension : ${products.join(", ")}, reliées par un compte unique`}>
+  <div class="desk" aria-hidden="true">
+    <div class="win w1">
+      <div class="bar"><i></i><i></i><i></i><span>NoteXtension</span></div>
+      <div class="body notes">
+        <div class="avg"><span class="mono lbl">Moyenne</span><b class="display">15,4</b><span class="up">↗ +0,8</span></div>
+        <div class="chart">
+          {grades.map((g, i) => <span style={`--h:${g}%; --d:${i * 90}ms`}></span>)}
+        </div>
       </div>
-    ))}
+    </div>
+
+    <div class="win w2">
+      <div class="bar"><i></i><i></i><i></i><span>LaTeXtension</span></div>
+      <div class="body latex">
+        <code class="mono src">\int_0^1 x^2\,dx<span class="caret"></span></code>
+        <div class="math">∫<span class="lim"><span>1</span><span>0</span></span><i>x</i><sup>2</sup> d<i>x</i> = <span class="frac"><span>1</span><span>3</span></span></div>
+      </div>
+    </div>
+
+    <div class="win w3">
+      <div class="bar"><i></i><i></i><i></i><span>Émargement</span></div>
+      <div class="body sign">
+        <div class="line"><span class="box on">✓</span><span>Systèmes embarqués</span><span class="mono t">08:30</span></div>
+        <div class="line"><span class="box on">✓</span><span>Traitement du signal</span><span class="mono t">10:15</span></div>
+        <div class="line"><span class="box pop">✓</span><span>FPGA</span><span class="mono t">13:45</span></div>
+      </div>
+    </div>
+
+    <div class="win w4">
+      <div class="bar"><i></i><i></i><i></i><span>Jeux</span></div>
+      <div class="body games">
+        <div class="ttt">
+          {board.map((c) => <span class:list={[c === "X" ? "x" : c === "O" ? "o" : ""]}>{c === "X" ? "×" : c === "O" ? "○" : ""}</span>)}
+          <em class="strike"></em>
+        </div>
+        <div class="score mono">Partie 12 · × gagne</div>
+      </div>
+    </div>
+
     <div class="hub">
-      <span class="display hub-name">Core<span>X</span></span>
-      <span class="mono hub-sub">Compte unique · OAuth2/OIDC</span>
+      <span class="display">Core<span>X</span></span>
+      <span class="mono">1 compte · 4 apps</span>
     </div>
   </div>
 </div>
@@ -27,51 +64,181 @@ const { products } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(16px, 4%, 32px);
+    container-type: inline-size;
+    overflow: hidden;
     background:
       radial-gradient(circle at 1px 1px, var(--line-soft) 1px, transparent 0) 0 0 / 18px 18px,
       var(--bg);
   }
-  .grid {
+  .desk {
     position: relative;
-    width: 100%;
-    max-width: 520px;
+    width: min(100%, 720px);
+    padding: 6cqw 5cqw;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(36px, 9%, 64px) clamp(12px, 4%, 24px);
+    gap: max(9cqw, 4em) 4cqw;
+    font-size: clamp(9px, 2.2cqw, 14px);
   }
-  .app {
-    position: relative;
-    z-index: 1;
+
+  /* fenêtres */
+  .win {
     background: var(--card);
     border: 1px solid var(--line-soft);
-    border-radius: 14px;
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.35);
+    overflow: hidden;
     min-width: 0;
+    animation: float 6s ease-in-out infinite;
   }
-  .idx { font-size: 11px; color: var(--muted); }
-  .name { font-size: clamp(14px, 1.7vw, 19px); font-stretch: 105%; overflow-wrap: anywhere; }
-  .hub {
+  .w1 { rotate: -3deg; }
+  .w2 { rotate: 2.5deg; animation-delay: -1.5s; }
+  .w3 { rotate: 2deg; animation-delay: -3s; }
+  .w4 { rotate: -2.5deg; animation-delay: -4.5s; }
+  @keyframes float {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -6px; }
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.5em 0.7em;
+    border-bottom: 1px solid var(--line-soft);
+    font-weight: 600;
+    font-size: 0.9em;
+  }
+  .bar i { width: 0.6em; height: 0.6em; border-radius: 50%; background: var(--line-soft); }
+  .bar i:first-child { background: var(--accent); }
+  .bar span { margin-left: 0.4em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .body { padding: 0.8em; display: flex; flex-direction: column; gap: 0.6em; min-height: 7.5em; }
+
+  /* NoteXtension */
+  .avg { display: flex; align-items: baseline; gap: 0.5em; flex-wrap: wrap; }
+  .lbl { color: var(--muted); font-size: 0.85em; }
+  .avg b { font-size: 1.8em; }
+  .up { color: var(--ok-fg); background: var(--ok-bg); border-radius: 999px; padding: 0 0.5em; font-size: 0.85em; }
+  .chart { height: 4em; display: flex; align-items: flex-end; gap: 6%; }
+  .chart span {
+    flex: 1;
+    height: var(--h);
+    background: var(--accent);
+    border-radius: 3px 3px 0 0;
+    opacity: 0.85;
+    transform-origin: bottom;
+    animation: grow 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: var(--d);
+  }
+  .chart span:last-child { opacity: 1; }
+  @keyframes grow { from { transform: scaleY(0.15); } }
+
+  /* LaTeXtension */
+  .src {
+    font-size: 0.85em;
+    background: var(--bg);
+    border-radius: 6px;
+    padding: 0.4em 0.6em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .caret {
+    display: inline-block;
+    width: 0.5em;
+    height: 1em;
+    margin-left: 2px;
+    vertical-align: -0.15em;
+    background: var(--accent);
+    animation: blink 1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .math {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 1.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.15em;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .math sup { font-size: 0.55em; align-self: flex-start; }
+  .lim { display: inline-flex; flex-direction: column; justify-content: space-between; font-size: 0.5em; line-height: 1.2; margin-right: 0.2em; }
+  .frac { display: inline-flex; flex-direction: column; align-items: center; font-size: 0.8em; line-height: 1.1; }
+  .frac span:first-child { border-bottom: 1px solid currentColor; padding: 0 0.15em; }
+
+  /* Émargement */
+  .line { display: flex; align-items: center; gap: 0.5em; font-size: 0.9em; min-width: 0; }
+  .line span:nth-child(2) { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .t { color: var(--muted); font-size: 0.85em; }
+  .box {
+    width: 1.2em;
+    height: 1.2em;
+    flex: none;
+    border-radius: 4px;
+    display: grid;
+    place-items: center;
+    font-size: 0.8em;
+    font-weight: 700;
+    background: var(--ok-bg);
+    color: var(--ok-fg);
+  }
+  .pop { animation: pop 3s ease-in-out infinite; }
+  @keyframes pop {
+    0%, 40% { background: var(--bg); color: transparent; scale: 1; }
+    50% { scale: 1.3; }
+    60%, 100% { background: var(--ok-bg); color: var(--ok-fg); scale: 1; }
+  }
+
+  /* Jeux */
+  .games { align-items: center; }
+  .ttt {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1.7em);
+    grid-auto-rows: 1.7em;
+    gap: 2px;
+    background: var(--line-soft);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .ttt span { background: var(--card); display: grid; place-items: center; font-weight: 700; font-size: 1.1em; }
+  .ttt .x { color: var(--accent); }
+  .ttt .o { color: var(--muted); }
+  .strike {
     position: absolute;
-    z-index: 2;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+    width: 130%;
+    height: 2px;
+    background: var(--accent);
+    rotate: 45deg;
+    translate: -50% -50%;
+    transform-origin: center;
+    animation: strike 3s ease-in-out infinite;
+  }
+  @keyframes strike {
+    0%, 30% { scale: 0 1; }
+    50%, 100% { scale: 1 1; }
+  }
+  .score { font-size: 0.8em; color: var(--muted); }
+
+  /* compte unique au centre */
+  .hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    z-index: 2;
     background: var(--accent);
     color: var(--on-accent);
     border-radius: 999px;
-    padding: 10px 20px;
+    padding: 0.5em 1.2em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
     white-space: nowrap;
     box-shadow: 0 0 0 6px var(--bg);
   }
-  .hub-name { font-size: 20px; }
-  .hub-name span { opacity: 0.7; }
-  .hub-sub { font-size: 10px; letter-spacing: 0.04em; opacity: 0.85; }
+  .hub .display { font-size: 1.4em; }
+  .hub .display span { opacity: 0.7; }
+  .hub .mono { font-size: 0.75em; opacity: 0.85; }
 </style>

@@ -40,4 +40,6 @@ Environ **1,5 mois** séparaient le début de la conception de la mise au point 
 
 ## Ce que j'en retiens
 
-<!-- À compléter : enseignements techniques, problèmes rencontrés en course, ce que tu changerais pour la prochaine saison. -->
+- **Monter une équipe et un projet de zéro.** L'équipe n'existait pas en mars 2026 : il a fallu répartir les rôles, s'organiser et tenir un calendrier qui ne pouvait pas glisser.
+- **Concevoir pour l'échéance.** Avec 1,5 mois, chaque pièce doit être simple à fabriquer et à remplacer. Une solution qui fonctionne le jour J vaut mieux qu'une solution optimale livrée trop tard.
+- **La fiabilité avant la vitesse.** Une course de 4 heures se gagne d'abord en restant en piste : chaque arrêt coûte des tours.
