@@ -12,10 +12,14 @@ const projets = defineCollection({
       status: z.enum(["en-cours", "termine", "en-ligne"]),
       statusLabel: z.string().optional(),
       role: z.string(),
-      period: z.string(),
+      period: z.string().optional(),
       order: z.number(),
       featured: z.boolean().default(false),
-      category: z.enum(["Hardware", "Logiciel", "Mécanique", "Infra"]),
+      // "personnel" : projets menés de ma propre initiative ; "etudes" : projets réalisés dans le cadre du cursus
+      kind: z.enum(["personnel", "etudes"]).default("personnel"),
+      // cadre du projet, affiché sur la page (ex. « ING4 SE · ECE Paris · équipe de 3 »)
+      context: z.string().optional(),
+      category: z.string(),
       stack: z.array(z.string()),
       // Légende affichée tant qu'il n'y a ni image ni visuel
       cover: z.string(),

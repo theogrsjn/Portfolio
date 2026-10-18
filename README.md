@@ -43,5 +43,18 @@ docker compose up -d --build
 | Couleurs et typographie (thèmes clair et sombre) | `src/styles/global.css` |
 | CV téléchargeable | `public/cv/TheoGROSJEAN_CV.pdf` |
 
-Ajouter un projet revient à ajouter un fichier `.md` dans `src/content/projets/` (avec `featured: true` pour l'afficher sur l'accueil).
-Les zones hachurées sont des emplacements d'images à remplacer par de vraies photos.
+Ajouter un projet revient à ajouter un fichier `.md` dans `src/content/projets/` :
+`kind: personnel` ou `kind: etudes` choisit la section de la page Projets, et `featured: true` l'affiche aussi sur l'accueil.
+
+### Ajouter une photo à un projet
+
+1. Copier l'image dans `src/assets/projets/` (JPG, PNG ou WebP ; elle est redimensionnée et convertie automatiquement).
+2. Dans le fichier `.md` du projet, ajouter sous `cover:` :
+
+```yaml
+image: ../../assets/projets/mon-image.jpg
+imageAlt: "Description de ce que montre l'image"
+imageFit: contain   # facultatif : pour un rendu CAO ou un objet sur fond blanc
+```
+
+Tant qu'un projet n'a pas d'image, une zone hachurée affiche le texte de `cover:`.

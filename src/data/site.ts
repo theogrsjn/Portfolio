@@ -29,7 +29,7 @@ export const nav = [
 
 export const stats = [
   { value: "6", sup: "e", label: "mondial au Hydrogen Grand Prix 2026" },
-  { value: "600+", label: "étudiants inscrits sur CoreXtension" },
+  { value: "800+", label: "utilisateurs inscrits sur CoreXtension" },
 ];
 
 export type Entry = {
@@ -106,7 +106,8 @@ export const education: Entry[] = [
 
 export const skills = [
   { group: "Électronique & fabrication", items: ["KiCad", "Routage PCB/PCBA", "OnShape", "SolidWorks", "Bambu Studio", "Cura", "Découpe laser Trotec"] },
-  { group: "Programmation", items: ["C", "Python", "JavaScript", "PHP", "HTML/CSS"] },
+  { group: "Systèmes embarqués", items: ["C/C++", "ESP32", "ATmega328P", "FPGA (Intel Quartus)", "Multithreading", "ROS 2"] },
+  { group: "Programmation", items: ["Python", "JavaScript", "PHP", "SQL", "HTML/CSS"] },
   { group: "Systèmes & infra", items: ["Linux (RHEL, Ubuntu)", "Docker", "Proxmox", "Ansible", "Cloudflare", "Ubiquiti", "Grafana"] },
   { group: "Bases de données", items: ["PostgreSQL", "MySQL"] },
 ];
@@ -114,11 +115,4 @@ export const skills = [
 export const languages = [
   { name: "Français", level: "Langue maternelle" },
   { name: "Anglais", level: "B2 · TOEIC 855, IELTS 6.0" },
-];
-
-export const schoolProjects = [
-  { title: "Interface utilisateur tangible", context: "FabLab ECE", desc: "Surface de formes actionnées inspirée du projet inFORM du MIT." },
-  { title: "Console de jeu ATTiny", context: "ECE Paris", desc: "Console portable sur microcontrôleur ATTiny." },
-  { title: "Reconnaissance vocale", context: "ECE Paris", desc: "Modèle de reconnaissance vocale entraîné avec PyTorch." },
-  { title: "Conception FPGA", context: "ECE Paris", desc: "Projets de logique numérique sous Intel Quartus." },
 ];

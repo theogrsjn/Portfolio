@@ -36,7 +36,8 @@ const { Content } = await render(project);
     <aside class="card meta">
       <dl>
         <div><dt class="mono muted">Rôle</dt><dd>{d.role}</dd></div>
-        <div><dt class="mono muted">Période</dt><dd>{d.period}</dd></div>
+        {d.period && <div><dt class="mono muted">Période</dt><dd>{d.period}</dd></div>}
+        {d.context && <div><dt class="mono muted">Cadre</dt><dd>{d.context}</dd></div>}
         <div>
           <dt class="mono muted">Technologies</dt>
           <dd class="pills">{d.stack.map((s) => <span class="pill">{s}</span>)}</dd>

@@ -3,7 +3,7 @@ title: CoreXtension
 eyebrow: Full-stack · infra · depuis 2025
 summary: Le groupe de logiciels étudiants que j'ai fondé et que j'héberge moi-même, avec un compte unique pour tous les services.
 status: en-ligne
-statusLabel: 600+ inscrits
+statusLabel: 800+ inscrits
 role: Fondateur, développeur full-stack et administrateur
 period: Septembre 2025 → aujourd'hui
 order: 3
@@ -13,8 +13,8 @@ stack: [JavaScript, PHP, PostgreSQL, OAuth2/OIDC, Docker, Extensions navigateur]
 cover: "[Mosaïque de captures des applications]"
 visual: corextension
 facts:
-  - { value: "600+", label: "utilisateurs inscrits" }
-  - { value: "35+", label: "actifs par jour sur NoteXtension" }
+  - { value: "800+", label: "utilisateurs inscrits" }
+  - { value: "50+", label: "utilisateurs actifs par jour" }
   - { value: "5", label: "sites conteneurisés et auto-hébergés" }
 products:
   - { name: NoteXtension, desc: "Récupération, analyse et suivi des notes des étudiants du groupe OMNES, via une extension Chrome et Firefox et une plateforme web.", url: "https://notextension.fr" }
@@ -51,4 +51,4 @@ Tous les services partagent un **service d'identité OAuth2/OIDC** que j'ai mis 
 
 ## Les chiffres
 
-Plus de **600 utilisateurs inscrits**, et plus de **35 utilisateurs actifs par jour** sur NoteXtension (relevé du 11/08/2026).
+Plus de **800 utilisateurs inscrits** et plus de **50 utilisateurs actifs par jour**.
