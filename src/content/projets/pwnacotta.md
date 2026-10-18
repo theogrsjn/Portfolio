@@ -10,6 +10,8 @@ kind: personnel
 category: Cybersécurité
 stack: [Raspberry Pi Zero 2 W, Linux, Python, Écran Waveshare V4, Impression 3D]
 cover: "[Photo : le PwnaCotta dans sa coque]"
+image: ../../assets/projets/pwnacotta.jpg
+imageAlt: "Le PwnaCotta dans sa coque noire imprimée en 3D avec son mousqueton ; l'écran e-paper affiche un visage et l'état de l'appareil"
 ---
 
 ## L'idée

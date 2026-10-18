@@ -11,6 +11,9 @@ kind: etudes
 category: Embarqué
 stack: [ATtiny85, C/Arduino, Écran OLED, Buzzer, Impression 3D]
 cover: "[Photo : la console allumée]"
+image: ../../assets/projets/console-attiny.jpg
+imageAlt: "La mini-console tenue en main : coque grise imprimée en 3D, deux croix directionnelles, écran OLED, buzzer et puce ATtiny85 apparente"
+imagePosition: "center 55%"
 ---
 
 ## Le défi

@@ -11,6 +11,9 @@ kind: etudes
 category: Robotique
 stack: [ESP32, C/C++, PID, Encodeurs à effet Hall]
 cover: "[Photo : le robot et une forme tracée]"
+image: ../../assets/projets/drawbot-pid.jpg
+imageAlt: "Le DrawBot : robot noir à deux roues bleues imprimé en 3D, avec un feutre fixé à l'avant"
+imagePosition: "center 60%"
 ---
 
 ## Le défi

@@ -11,6 +11,9 @@ kind: etudes
 category: FPGA
 stack: [VHDL, FPGA DE10-Lite, Quartus Prime Lite, VGA, Capteur à ultrasons, Encodeur rotatif]
 cover: "[Photo : le jeu affiché sur l'écran VGA]"
+image: ../../assets/projets/fruit-ninja-fpga.jpg
+imageAlt: "La carte FPGA DE10-Lite dans son boîtier de transport, avec le capteur à ultrasons, l'encodeur rotatif, la sortie VGA et les câbles"
+imagePosition: "center 25%"
 ---
 
 ## Le défi

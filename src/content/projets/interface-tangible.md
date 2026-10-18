@@ -11,8 +11,11 @@ kind: etudes
 category: Mécatronique
 stack: [OnShape, SolidWorks, Servomoteurs, Microcontrôleurs, Impression 3D]
 cover: "[Photo : la surface de la table en relief]"
-image: ../../assets/projets/interface-tangible-structure.jpg
-imageAlt: "La structure de l'interface tangible en cours d'assemblage : cadre en profilés aluminium, rangées de servomoteurs, deux alimentations et un arrêt d'urgence"
+image: ../../assets/projets/interface-tangible-valise.jpg
+imageAlt: "L'interface tangible terminée dans sa valise de transport : grille de tiges dont certaines sont levées, engrenages visibles sous la plaque transparente et arrêt d'urgence"
+imagePosition: "center 65%"
+gallery:
+  - { src: ../../assets/projets/interface-tangible-structure.jpg, alt: "La structure en cours d'assemblage : cadre en profilés aluminium, rangées de servomoteurs, deux alimentations et un arrêt d'urgence" }
 ---
 
 ## L'idée
