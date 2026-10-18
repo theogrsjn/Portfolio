@@ -27,6 +27,10 @@ const projets = defineCollection({
       imageAlt: z.string().optional(),
       // "cover" remplit le cadre (photo), "contain" garde l'objet entier sur fond clair (rendu CAO)
       imageFit: z.enum(["cover", "contain"]).default("cover"),
+      // cadrage de la photo quand elle est rognée (valeur CSS object-position, ex. "center 30%")
+      imagePosition: z.string().default("center"),
+      // photos supplémentaires affichées sur la page du projet
+      gallery: z.array(z.object({ src: image(), alt: z.string() })).optional(),
       // Visuel dessiné en CSS quand il n'existe pas de photo
       visual: z.enum(["corextension"]).optional(),
       facts: z.array(z.object({ value: z.string(), label: z.string() })).optional(),

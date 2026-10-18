@@ -3,6 +3,7 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import Base from "../../layouts/Base.astro";
 import StatusTag from "../../components/StatusTag.astro";
 import ProjectMedia from "../../components/ProjectMedia.astro";
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projets");
@@ -80,6 +81,20 @@ const { Content } = await render(project);
       <article class="prose">
         <Content />
       </article>
+
+      {d.gallery && (
+        <section class="gallery" aria-label="Photos du projet">
+          <h2 class="display">En images</h2>
+          <div class="shots">
+            {d.gallery.map((g) => (
+              <figure>
+                <Image src={g.src} alt={g.alt} widths={[480, 720, 960]} sizes="(min-width: 1000px) 30vw, 100vw" format="webp" loading="lazy" />
+                <figcaption class="muted">{g.alt}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   </div>
 </Base>
@@ -109,6 +124,12 @@ const { Content } = await render(project);
   .pname { font-size: 22px; font-stretch: 112%; }
   .product p { margin: 0; color: var(--text); font-size: 15px; }
 
+  .gallery { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+  .gallery h2 { margin: 0; font-size: 28px; font-stretch: 112%; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+  figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  figure :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-sm); }
+  figcaption { font-size: 14px; }
   .prose :global(blockquote) {
     margin: 0 0 24px;
     padding: 16px 20px;

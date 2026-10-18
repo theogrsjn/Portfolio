@@ -1,25 +1,31 @@
 ---
 title: Reconnaissance vocale
 eyebrow: IA · traitement du signal
-summary: Un modèle de deep learning entraîné avec PyTorch pour reconnaître des mots prononcés à partir d'enregistrements audio.
+summary: Un assistant vocal embarqué dans un boîtier imprimé en 3D, qui reconnaît des mots grâce à un réseau de neurones convolutif entraîné avec PyTorch.
 status: termine
 role: Projet d'école
 context: Cycle ingénieur
 order: 18
 kind: etudes
 category: IA
-stack: [Python, PyTorch, Traitement du signal]
+stack: [Python, PyTorch, CNN, MFCC, Arduino Due, Écran OLED]
 cover: "[Visuel : spectrogramme ou courbes d'entraînement]"
+image: ../../assets/projets/reconnaissance-vocale-boitier.jpg
+imageAlt: "Le boîtier blanc de l'assistant vocal, son écran OLED affiche « Analyse MFCC… Inférence CNN… »"
+imagePosition: "center 45%"
+gallery:
+  - { src: ../../assets/projets/reconnaissance-vocale-interieur.jpg, alt: "L'intérieur du boîtier : carte Arduino, module microphone, écran OLED et deux boutons sur une carte à pastilles, ruban de LED violet" }
 ---
 
 ## Le principe
 
-Un enregistrement audio est d'abord transformé en **spectrogramme**, une image qui montre l'énergie de chaque fréquence au cours du temps. Un réseau de neurones apprend ensuite à reconnaître, sur ces images, le mot qui a été prononcé.
+Le boîtier écoute à travers son **microphone**. Le son est d'abord transformé en **coefficients MFCC**, une représentation compacte de la voix qui imite la façon dont l'oreille perçoit les fréquences. Un **réseau de neurones convolutif (CNN)** analyse ensuite ces coefficients pour reconnaître le mot prononcé.
 
 ## Ce qui a été réalisé
 
-- **La préparation des données** : découpage et normalisation des enregistrements, calcul des spectrogrammes.
-- **Le modèle** : conception et entraînement d'un réseau de neurones avec **PyTorch**.
-- **L'évaluation** : mesure de la précision sur des enregistrements que le modèle n'a jamais vus.
+- **Le modèle** : préparation des enregistrements, calcul des MFCC, puis conception et entraînement du CNN avec **PyTorch**.
+- **Le matériel** : une carte **Arduino Due**, un module microphone à gain réglable, un écran OLED, deux boutons et un ruban de LED, réunis sur une carte à pastilles.
+- **Le boîtier** : une coque imprimée en 3D, avec une ouverture pour le micro, une fenêtre pour l'écran et des boutons intégrés.
+- **L'interface** : l'écran affiche chaque étape du traitement (« Analyse MFCC… », « Inférence CNN… ») puis le résultat, et les LED réagissent à l'état de l'assistant.
 
-<!-- À vérifier et compléter : jeu de données, nombre de mots reconnus, architecture du réseau, précision obtenue. -->
+<!-- À vérifier : la carte (Arduino Due d'après la photo), les mots reconnus, où tourne l'inférence (sur la carte ou sur un ordinateur), la précision obtenue. -->

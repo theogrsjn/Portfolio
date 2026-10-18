@@ -24,4 +24,6 @@ Sur un **FPGA**, on ne programme pas un processeur : on décrit directement les 
 - **La détection des collisions** entre la lame et les fruits.
 - **La génération pseudo-aléatoire** des fruits, pour que chaque partie soit différente.
 
-Le tout tourne sur une carte **DE10-Lite**, développé avec **Quartus Prime Lite**.
+Le tout tourne sur une carte **DE10-Lite** (FPGA Intel MAX 10), développé avec **Quartus Prime Lite**. La carte, ses commandes (un capteur à ultrasons et un potentiomètre) et la sortie VGA sont rangées dans un boîtier de transport.
+
+<!-- À vérifier : le rôle du capteur à ultrasons et du potentiomètre dans le jeu. -->

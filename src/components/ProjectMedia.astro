@@ -15,11 +15,14 @@ interface Props {
 }
 
 const { project, widths, sizes, class: className, eager = false, tall = false } = Astro.props;
-const { image, imageAlt, imageFit, visual, cover, products } = project.data;
+const { image, imageAlt, imageFit, imagePosition, visual, cover, products } = project.data;
+// en grand format, une photo verticale est affichée entière plutôt que rognée et agrandie
+const fit = tall && image && image.height > image.width ? "portrait" : imageFit;
 ---
 
 {image ? (
-  <div class:list={["media", `fit-${imageFit}`, { tall }, className]}>
+  <div class:list={["media", `fit-${fit}`, { tall }, className]}>
+    {fit === "portrait" && <Image src={image} alt="" widths={[320]} sizes="320px" format="webp" class="backdrop" aria-hidden="true" />}
     <Image
       src={image}
       alt={imageAlt ?? ""}
@@ -28,6 +31,7 @@ const { image, imageAlt, imageFit, visual, cover, products } = project.data;
       format="webp"
       loading={eager ? "eager" : "lazy"}
       fetchpriority={eager ? "high" : undefined}
+      style={`object-position: ${imagePosition}`}
     />
   </div>
 ) : visual === "corextension" ? (
@@ -54,6 +58,9 @@ const { image, imageAlt, imageFit, visual, cover, products } = project.data;
   .fit-cover :global(img) { object-fit: cover; }
   .fit-contain { background: var(--render-bg); }
   .fit-contain :global(img) { object-fit: contain; padding: 24px; }
+  .fit-portrait { background: var(--card); }
+  .fit-portrait :global(img) { object-fit: contain; }
+  .fit-portrait :global(img.backdrop) { object-fit: cover; filter: blur(28px) saturate(1.1); transform: scale(1.15); opacity: 0.7; }
   .fit-visual { display: flex; }
   .tall { min-height: clamp(280px, 48vw, 620px); border-radius: var(--radius); }
 </style>

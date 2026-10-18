@@ -20,7 +20,7 @@ Un **Pwnagotchi** est un petit appareil autonome qui écoute les réseaux Wi-Fi 
 
 - **Le système** : installation et configuration de Linux sur un **Raspberry Pi Zero 2 W**, avec un écran e-paper **Waveshare V4**.
 - **L'audit autonome** : la mise en place du système d'audit des réseaux Wi-Fi, qui fonctionne sans ordinateur.
-- **Le boîtier** : la conception et l'impression 3D d'une coque portable.
+- **Le boîtier** : la conception et l'impression 3D d'une coque compacte, à accrocher avec un mousqueton.
 - **Les tests** : la capture de handshakes WPA sur des réseaux sécurisés, dans un cadre d'apprentissage.
 
 Un projet qui mêle cybersécurité, IA embarquée et hardware.

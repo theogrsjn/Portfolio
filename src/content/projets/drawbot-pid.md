@@ -23,3 +23,4 @@ Pour dessiner un carré ou un cercle propre, un robot doit savoir exactement de 
 - **L'asservissement** : une **régulation PID** compare la position mesurée à la position voulue et corrige la commande des moteurs.
 - **Le calcul de trajectoire** : la décomposition de chaque forme géométrique en consignes pour les roues.
 - **La correction en temps réel** : le tout tourne sur un **ESP32**, programmé en C/C++.
+- **Le robot** : un châssis à deux roues imprimé en 3D, avec un feutre fixé à l'avant qui trace la forme au sol.

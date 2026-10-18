@@ -12,6 +12,11 @@ kind: etudes
 category: Robotique
 stack: [ESP32, ATmega328P, ESP-01S, KiCad, LiDAR, IMU, Wi-Fi, Python, ROS 2]
 cover: "[Photo : le rover et la télécommande sur PCB]"
+image: ../../assets/projets/ecepilot-telecommande.jpg
+imageAlt: "La télécommande ECEPILOT tenue en main : coque noire imprimée en 3D, joystick et écran OLED affichant la position du joystick et la vitesse"
+imagePosition: "center 40%"
+gallery:
+  - { src: ../../assets/projets/ecepilot-mallette.jpg, alt: "Le rover avec son LiDAR et la télécommande rangés dans leur mallette de transport" }
 facts:
   - { value: "2", label: "cœurs de l'ESP32 exploités en parallèle" }
   - { value: "1", label: "PCB de télécommande conçu et fabriqué" }
@@ -26,7 +31,7 @@ ECEPILOT est le projet technique de l'année d'ING4 Systèmes embarqués. Par é
 
 ### Une télécommande sur notre propre PCB
 
-La télécommande est une carte que nous avons dessinée sous KiCad puis fabriquée au FabLab. Elle réunit un **ATmega328P** pour la logique et un module **ESP-01S** pour le Wi-Fi, avec un joystick, quatre boutons, un écran OLED, une LED RGB et un buzzer.
+La télécommande est une carte que nous avons dessinée sous KiCad puis fabriquée au FabLab. Elle réunit un **ATmega328P** pour la logique et un module **ESP-01S** pour le Wi-Fi, avec un joystick, quatre boutons, un écran OLED, une LED RGB et un buzzer, le tout dans une coque ergonomique imprimée en 3D.
 
 Le cahier des charges imposait un **PCB simple face** de 100 × 100 mm maximum, avec au plus 8 straps : il a fallu soigner le placement des composants pour router presque toutes les pistes sur une seule couche.
 
