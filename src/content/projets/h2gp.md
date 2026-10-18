@@ -1,7 +1,7 @@
 ---
 title: ECE Paris H2 Racing
 eyebrow: Mécanique · CAO · 2026
-summary: Co-fondateur et responsable mécanique. Un véhicule à l'échelle 1/10 sur pile à combustible hydrogène, conçu en 1,5 mois pour la finale mondiale en Suisse, 520 tours en 4 h d'endurance.
+summary: Co-fondateur et responsable mécanique. Un véhicule à l'échelle 1/10 sur pile à combustible hydrogène, conçu en moins de 2 mois pour la finale mondiale en Suisse, 520 tours en 4 h d'endurance.
 status: termine
 statusLabel: 6e mondial
 role: Co-fondateur et responsable mécanique / CAO
@@ -16,7 +16,7 @@ imageAlt: "L'équipe ECE Paris H2 Racing célèbre devant le tableau des scores 
 facts:
   - { value: "6e", label: "place à la finale mondiale" }
   - { value: "520", label: "tours en 4 h d'endurance" }
-  - { value: "1,5 mois", label: "de la conception à la mise au point" }
+  - { value: "< 2 mois", label: "de la conception à la mise au point" }
 ---
 
 ## Le contexte
@@ -32,7 +32,7 @@ Le **Hydrogen Grand Prix** est une compétition internationale de véhicules à 
 
 ## La contrainte principale : le temps
 
-Environ **1,5 mois** séparaient le début de la conception de la mise au point finale. Chaque choix de conception devait pouvoir être fabriqué et testé rapidement.
+**Moins de 2 mois** séparaient le début de la conception de la mise au point finale. Chaque choix de conception devait pouvoir être fabriqué et testé rapidement.
 
 ## Le résultat
 
@@ -42,5 +42,5 @@ Environ **1,5 mois** séparaient le début de la conception de la mise au point 
 ## Ce que j'en retiens
 
 - **Monter une équipe et un projet de zéro.** L'équipe n'existait pas en mars 2026 : il a fallu répartir les rôles, s'organiser et tenir un calendrier qui ne pouvait pas glisser.
-- **Concevoir pour l'échéance.** Avec 1,5 mois, chaque pièce doit être simple à fabriquer et à remplacer. Une solution qui fonctionne le jour J vaut mieux qu'une solution optimale livrée trop tard.
+- **Concevoir pour l'échéance.** Avec moins de 2 mois, chaque pièce doit être simple à fabriquer et à remplacer. Une solution qui fonctionne le jour J vaut mieux qu'une solution optimale livrée trop tard.
 - **La fiabilité avant la vitesse.** Une course de 4 heures se gagne d'abord en restant en piste : chaque arrêt coûte des tours.

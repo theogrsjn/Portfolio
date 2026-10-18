@@ -139,7 +139,7 @@ export const education: Entry[] = [
 
 export const skills = [
   { group: "Électronique & fabrication", items: ["KiCad", "Routage PCB/PCBA", "OnShape", "SolidWorks", "Bambu Studio", "Cura", "Découpe laser Trotec"] },
-  { group: "Systèmes embarqués", items: ["C/C++", "ESP32", "ATmega328P", "ATTiny", "Raspberry Pi", "FPGA (VHDL, Quartus)", "ROS 2"] },
+  { group: "Systèmes embarqués", items: ["C/C++", "ESP32", "ATmega328P", "ATTiny", "Raspberry Pi", "FPGA (VHDL, Quartus)"] },
   { group: "Programmation & web", items: ["Python", "JavaScript", "Node.js", "React", "PHP", "SQL", "HTML/CSS"] },
   { group: "Systèmes & infra", items: ["Linux (RHEL, Ubuntu)", "Docker", "Proxmox", "Ansible", "VMware", "Cloudflare", "Tailscale", "WireGuard", "Grafana"] },
   { group: "Bases de données", items: ["PostgreSQL", "MySQL"] },

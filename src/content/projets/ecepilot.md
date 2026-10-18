@@ -1,31 +1,31 @@
 ---
 title: ECEPILOT
 eyebrow: Robotique · embarqué · en cours
-summary: Un rover piloté par une télécommande que nous avons conçue, avec un LiDAR qui déclenche l'arrêt d'urgence. Le semestre 1 est terminé ; le semestre 2 passe à la navigation sous ROS 2.
+summary: Un rover piloté par une télécommande que nous avons conçue, avec un LiDAR qui déclenche l'arrêt d'urgence. Le semestre 1 est terminé ; le semestre 2 passera à la navigation sous ROS 2.
 status: en-cours
 statusLabel: Semestre 2 à venir
-role: Membre d'une équipe de 3
+role: Membre d'une équipe de 4
 period: Septembre 2026 → aujourd'hui
 context: Projet technique ING4 Systèmes embarqués · ECE Paris
 order: 10
 kind: etudes
 category: Robotique
-stack: [ESP32, ATmega328P, ESP-01S, KiCad, LiDAR, IMU, Wi-Fi, Python, ROS 2]
+stack: [ESP32, ATmega328P, ESP-01S, KiCad, LiDAR, IMU, Wi-Fi, Python, Impression 3D]
 cover: "[Photo : le rover et la télécommande sur PCB]"
-image: ../../assets/projets/ecepilot-telecommande.jpg
-imageAlt: "La télécommande ECEPILOT tenue en main : coque noire imprimée en 3D, joystick et écran OLED affichant la position du joystick et la vitesse"
-imagePosition: "center 40%"
+image: ../../assets/projets/ecepilot-mallette.jpg
+imageAlt: "Le rover avec son LiDAR et la télécommande rangés dans leur mallette de transport"
+imagePosition: "center 60%"
 gallery:
-  - { src: ../../assets/projets/ecepilot-mallette.jpg, alt: "Le rover avec son LiDAR et la télécommande rangés dans leur mallette de transport" }
+  - { src: ../../assets/projets/ecepilot-telecommande.jpg, alt: "La télécommande tenue en main : coque noire imprimée en 3D, joystick et écran OLED affichant la position du joystick et la vitesse" }
 facts:
   - { value: "2", label: "cœurs de l'ESP32 exploités en parallèle" }
   - { value: "1", label: "PCB de télécommande conçu et fabriqué" }
-  - { value: "S2", label: "navigation sous ROS 2" }
+  - { value: "S2", label: "navigation sous ROS 2, à venir" }
 ---
 
 ## Le projet
 
-ECEPILOT est le projet technique de l'année d'ING4 Systèmes embarqués. Par équipes de trois, nous construisons un **véhicule connecté** sur la base d'un rover Waveshare : d'abord piloté à distance, puis de plus en plus autonome. Le projet suit un cycle en V, avec trois soutenances au premier semestre.
+ECEPILOT est le projet technique de l'année d'ING4 Systèmes embarqués. Au sein d'une équipe de quatre, nous construisons un **véhicule connecté** sur la base d'un rover Waveshare : d'abord piloté à distance, puis de plus en plus autonome. Le projet suit un cycle en V, avec trois soutenances au premier semestre.
 
 ## Semestre 1 : le pilotage à distance (terminé)
 
@@ -50,6 +50,6 @@ Le cahier des charges imposait un **PCB simple face** de 100 × 100 mm maximum, 
 
 ## Semestre 2 : vers l'autonomie avec ROS 2 (à venir)
 
-Le second semestre ajoute la **perception** et le **calcul de trajectoire** sous ROS 2, que nous avons déjà installé et pris en main en fin de semestre 1.
+Le second semestre ajoutera la **perception** et le **calcul de trajectoire** sous **ROS 2**. Cette phase n'a pas encore commencé.
 
 <!-- À compléter : résultats des soutenances, temps au chrono, photos du PCB et du rover, ta part précise dans l'équipe. -->
