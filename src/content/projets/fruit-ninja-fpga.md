@@ -9,7 +9,7 @@ context: ECE Paris
 order: 12
 kind: etudes
 category: FPGA
-stack: [VHDL, FPGA DE10-Lite, Quartus Prime Lite, VGA]
+stack: [VHDL, FPGA DE10-Lite, Quartus Prime Lite, VGA, Capteur à ultrasons, Encodeur rotatif]
 cover: "[Photo : le jeu affiché sur l'écran VGA]"
 ---
 
@@ -21,9 +21,19 @@ Sur un **FPGA**, on ne programme pas un processeur : on décrit directement les 
 
 - **Un affichage VGA en temps réel** : la génération des signaux de synchronisation et le calcul de la couleur de chaque pixel à la volée.
 - **Une boucle de jeu matérielle** organisée en **machine à états** : menu, partie, fin de partie.
-- **La détection des collisions** entre la lame et les fruits.
+- **La détection des collisions** entre la ligne de coupe et les fruits.
 - **La génération pseudo-aléatoire** des fruits, pour que chaque partie soit différente.
 
-Le tout tourne sur une carte **DE10-Lite** (FPGA Intel MAX 10), développé avec **Quartus Prime Lite**. La carte, ses commandes (un capteur à ultrasons et un potentiomètre) et la sortie VGA sont rangées dans un boîtier de transport.
+## Les commandes
 
-<!-- À vérifier : le rôle du capteur à ultrasons et du potentiomètre dans le jeu. -->
+Pas de souris ni de manette : le joueur pilote une **ligne de coupe** avec des capteurs câblés directement sur la carte.
+
+- **Un capteur à ultrasons** mesure la distance de la main et déplace la ligne de coupe en hauteur.
+- **Un encodeur rotatif** règle l'inclinaison de la ligne.
+- **Le clic de l'encodeur** déclenche la coupe.
+
+Le FPGA lit ces capteurs en parallèle du reste du jeu : mesure du temps d'écho des ultrasons, décodage des impulsions de l'encodeur.
+
+## Le matériel
+
+Le tout tourne sur une carte **DE10-Lite** (FPGA Intel MAX 10), développé avec **Quartus Prime Lite**. La carte, ses commandes et la sortie VGA sont rangées dans un boîtier de transport.

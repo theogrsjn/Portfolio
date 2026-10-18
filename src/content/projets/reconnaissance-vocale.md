@@ -28,4 +28,4 @@ Le boîtier écoute à travers son **microphone**. Le son est d'abord transform�
 - **Le boîtier** : une coque imprimée en 3D, avec une ouverture pour le micro, une fenêtre pour l'écran et des boutons intégrés.
 - **L'interface** : l'écran affiche chaque étape du traitement (« Analyse MFCC… », « Inférence CNN… ») puis le résultat, et les LED réagissent à l'état de l'assistant.
 
-<!-- À vérifier : la carte (Arduino Due d'après la photo), les mots reconnus, où tourne l'inférence (sur la carte ou sur un ordinateur), la précision obtenue. -->
+<!-- À compléter : les mots reconnus, où tourne l'inférence (sur la carte ou sur un ordinateur), la précision obtenue. -->
