@@ -9,7 +9,7 @@ period: Juillet 2026 → aujourd'hui
 order: 2
 featured: true
 category: Hardware
-stack: [KiCad, PCB/PCBA, C embarqué, GNSS, LoRa, Radar mmWave, Caméra IR]
+stack: [KiCad, PCB/PCBA, C/C++, GNSS, Télémétrie laser, Radar mmWave, LoRa, Caméra IR]
 cover: "[Carnet de recherche : croquis, schéma optique]"
 image: ../../assets/projets/raim-cao.png
 imageAlt: "Rendu CAO de RAIM : boîtier noir du viseur avec fenêtre holographique, deux antennes, boutons latéraux et connecteur magnétique"
@@ -23,14 +23,15 @@ facts:
 
 ## L'objectif
 
-Concevoir un **viseur holographique** qui affiche directement dans la mire des informations issues de capteurs embarqués : position GNSS, télémétrie longue distance, détection radar mmWave, orientation (gyroscope), image infrarouge, avec une liaison LoRa.
+Concevoir un **viseur holographique** qui affiche directement dans la mire des informations issues de capteurs embarqués : position GNSS, télémétrie laser longue distance, détection radar mmWave, orientation (gyroscope) et image infrarouge, avec une communication longue portée en LoRa. La conception est complète : électronique, firmware et boîtier.
 
 ## La démarche
 
 1. **Recherche** : principes optiques des viseurs holographiques et réflexes, choix des capteurs, lecture des datasheets.
 2. **Architecture** : découpage en sous-systèmes (alimentation, acquisition capteurs, calcul, affichage, radio).
 3. **Électronique** : mes premières cartes, de la CAO au routage PCB puis à l'assemblage PCBA.
-4. **Code embarqué** : pilotes des capteurs et fusion des données pour l'affichage.
+4. **Firmware** en C/C++ : pilotes des capteurs et fusion des données pour l'affichage.
+5. **Boîtier** : conception CAO de l'enveloppe qui intègre l'optique, la carte et les antennes.
 
 ## La V1
 

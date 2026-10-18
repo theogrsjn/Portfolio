@@ -1,24 +1,26 @@
 ---
-title: Console ATTiny
-eyebrow: Embarqué · C
-summary: Une console de jeu portable construite autour d'un microcontrôleur ATTiny, avec des jeux écrits en C dans quelques kilo-octets de mémoire.
+title: Mini-console ATTiny
+eyebrow: Embarqué · 8 bits
+summary: Une mini-console de jeu sur microcontrôleur ATTiny, avec des jeux type Snake et Pong sur écran OLED.
 status: termine
 role: Projet d'école
-context: Cycle ingénieur · ECE Paris
-order: 21
+period: "2024"
+context: ECE Paris
+order: 17
 kind: etudes
 category: Embarqué
-stack: [ATTiny, C, Électronique, Soudure]
+stack: [ATTiny, C/Arduino, Écran OLED, Arduino IDE]
 cover: "[Photo : la console allumée]"
 ---
 
 ## Le défi
 
-Un **ATTiny** est un microcontrôleur minuscule : quelques kilo-octets de mémoire programme et quelques centaines d'octets de RAM. Faire tourner un jeu dessus oblige à compter chaque octet.
+Un **ATTiny** est un microcontrôleur 8 bits minuscule : quelques kilo-octets de mémoire programme et quelques centaines d'octets de RAM. Faire tourner un jeu dessus oblige à compter chaque octet.
 
 ## Ce qui a été réalisé
 
-- **Le matériel** : le câblage du microcontrôleur, de l'écran, des boutons et de l'alimentation.
-- **Le logiciel** : des jeux programmés en C, avec la lecture des boutons, l'affichage et la boucle de jeu, sans système d'exploitation.
+- **Des jeux type Snake et Pong** affichés sur un **écran OLED**.
+- **La lecture des boutons** et la **gestion du score**.
+- **L'optimisation mémoire** pour faire tenir l'affichage et la logique de jeu dans la mémoire du microcontrôleur.
 
-<!-- À vérifier et compléter : modèle d'ATTiny, type d'écran, jeux réalisés, photo de la console. -->
+Programmé en C avec l'environnement Arduino.

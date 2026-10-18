@@ -2,33 +2,35 @@
 import Base from "../layouts/Base.astro";
 
 const layers = [
-  { name: "Cloudflare", role: "DNS et exposition des services vers Internet, protection en frontal." },
-  { name: "Réseau Ubiquiti", role: "Routage, Wi-Fi et segmentation du réseau local." },
+  { name: "Cloudflare", role: "DNS et exposition publique des sites, protection en frontal." },
+  { name: "Tailscale · WireGuard", role: "Accès à distance chiffré pour l'administration." },
+  { name: "Réseau Ubiquiti", role: "Routage, Wi-Fi et segmentation du réseau en VLAN." },
   { name: "Proxmox", role: "Hyperviseur : machines virtuelles et conteneurs sur le serveur." },
+  { name: "NAS", role: "Stockage des données et des sauvegardes." },
   { name: "Docker", role: "Chaque service tourne dans son conteneur, avec sa propre base PostgreSQL." },
   { name: "Grafana", role: "Supervision : état des machines et des services." },
 ];
 ---
 
-<Base title="Homelab" description="L'infrastructure réseau et serveur auto-hébergée de Théo Grosjean : Proxmox, Docker, Cloudflare, Ubiquiti, Grafana.">
+<Base title="Homelab" description="L'infrastructure réseau et serveur auto-hébergée de Théo Grosjean depuis 2023 : Proxmox, Docker, VLAN, Cloudflare, Tailscale, WireGuard, Grafana.">
   <section class="intro">
     <div class="eyebrow">Homelab</div>
     <h1 class="display">Mon infrastructure</h1>
-    <p class="lead">Les sites CoreXtension et ce portfolio tournent sur un serveur que j'administre chez moi.</p>
+    <p class="lead">Mon laboratoire personnel depuis 2023, et l'environnement de production de mes projets : les sites CoreXtension et ce portfolio tournent dessus.</p>
   </section>
 
   <div class="layout">
     <div class="prose">
       <h2>Pourquoi l'auto-hébergement</h2>
       <p>
-        Mon stage à l'Institut Pasteur m'a fait découvrir l'administration de serveurs Linux sous RHEL 8. J'ai voulu continuer
-        à pratiquer : héberger mes propres services m'oblige à gérer le réseau, la sécurité, les mises à jour et la
-        supervision, comme en production.
+        J'ai commencé en 2023 pour apprendre en pratiquant : héberger mes propres services oblige à gérer le réseau, la
+        sécurité, les mises à jour et la supervision, comme en production. Mon stage DevOps à l'Institut Pasteur (RHEL 8,
+        Ansible, VMware) m'a ensuite apporté les méthodes d'une vraie infrastructure, que j'applique chez moi.
       </p>
       <h2>Les principes</h2>
       <ul>
-        <li><strong>Isolation</strong> : un conteneur et une base de données par service.</li>
-        <li><strong>Exposition minimale</strong> : rien n'est ouvert directement, tout passe par Cloudflare.</li>
+        <li><strong>Isolation</strong> : un réseau découpé en VLAN, un conteneur et une base de données par service.</li>
+        <li><strong>Accès maîtrisés</strong> : les sites publics passent par Cloudflare, l'administration se fait à distance via Tailscale et WireGuard.</li>
         <li><strong>Supervision</strong> : des tableaux de bord Grafana pour voir l'état de l'infrastructure.</li>
       </ul>
       <p class="muted note">Pour des raisons de sécurité, cette page ne détaille ni la topologie ni les adresses du réseau.</p>

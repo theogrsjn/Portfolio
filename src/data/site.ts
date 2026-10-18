@@ -43,12 +43,23 @@ export type Entry = {
 export const experience: Entry[] = [
   {
     period: "Mars 2026 → aujourd'hui",
-    title: "Co-fondateur et responsable mécanique CAO",
-    org: "ECE Paris H2 Racing",
+    title: "Co-fondateur et responsable mécanique / CAO",
+    org: "H2 Racing ECE Paris",
     place: "Paris",
     points: [
-      "Prototype à pile à combustible hydrogène pour la finale mondiale du Hydrogen Grand Prix 2026 (Suisse).",
-      "6e place mondiale, 520 tours en 4 h d'endurance, 1,5 mois de la conception à la mise au point.",
+      "Véhicule à l'échelle 1/10 sur pile à combustible hydrogène pour la finale mondiale du Hydrogen Grand Prix 2026 (Suisse) : 6e place mondiale, 520 tours en 4 h d'endurance.",
+      "Conception CAO, prototypage rapide et intégration du véhicule.",
+      "Coordination technique de l'équipe, recherche de sponsors et de partenariats.",
+    ],
+  },
+  {
+    period: "Sept. 2025 → aujourd'hui",
+    title: "Fondateur",
+    org: "CoreXtension",
+    points: [
+      "Éditeur de 4 logiciels (NoteXtension, LaTeXtension, WeSignXtension, PlayXtension) réunis par un compte unique : 800+ utilisateurs inscrits, 50+ actifs par jour.",
+      "Développement complet : back-end, front-end et extensions navigateur (Chrome, Firefox, Edge).",
+      "Service d'identité maison (OAuth2 / OpenID Connect), déploiement conteneurisé et auto-hébergé, conformité RGPD, SEO.",
     ],
   },
   {
@@ -57,7 +68,29 @@ export const experience: Entry[] = [
     org: "Thales",
     place: "Élancourt",
     points: [
+      "Service de Traitement d'Images, département Techniques Optroniques.",
       "Annotation et classification d'images aériennes du pod TALIOS pour l'entraînement d'algorithmes d'IA.",
+      "Relecture et validation des annotations de l'équipe, vérification et correction d'une base de données d'images.",
+    ],
+  },
+  {
+    period: "Sept. 2024 → aujourd'hui",
+    title: "Ambassadeur FabLab",
+    org: "ECE Paris",
+    place: "Paris",
+    points: [
+      "Équipe d'une dizaine d'étudiants qui gère le FabLab de l'école.",
+      "Formations hebdomadaires entre étudiants : impression 3D (FDM/SLA), découpe laser CO2 Trotec, fabrication de PCB.",
+      "Permanences et accueil lors des journées portes ouvertes.",
+    ],
+  },
+  {
+    period: "Sept. 2024 → sept. 2026",
+    title: "Assistant de TP",
+    org: "ECE Paris",
+    place: "Paris",
+    points: [
+      "Assistance aux enseignants pendant les travaux pratiques des étudiants d'ING1 et ING2 : réponses aux questions techniques, aide à la prise en main des outils et des sujets.",
     ],
   },
   {
@@ -66,18 +99,18 @@ export const experience: Entry[] = [
     org: "Institut Pasteur",
     place: "Paris",
     points: [
-      "Déploiement d'un environnement Posit Workbench sur serveur Linux (RHEL 8) en infrastructure HPC, avec Ansible et gestion de configuration.",
+      "Stage dans une équipe d'infrastructure de calcul haute performance.",
+      "Déploiement de Posit Workbench (ex-RStudio) sur serveur Linux RHEL 8, configuration automatisée avec des playbooks Ansible.",
+      "Intégration avec VMware et le stockage réseau NFS.",
     ],
   },
   {
-    period: "Sept. 2024 → aujourd'hui",
-    title: "Ambassadeur FabLab et assistant de TP",
-    org: "ECE Paris",
-    place: "Paris",
+    period: "Avr. 2023 → mars 2025",
+    title: "Services à la demande (freelance)",
+    org: "Yoojo",
+    place: "Paris et périphérie",
     points: [
-      "Formations entre pairs : impression FDM/SLA, découpe laser CO2, fabrication de PCB sur DCT Hybrido.",
-      "Coordination des événements avec 6 ambassadeurs.",
-      "Assistance aux professeurs et étudiants ING1/ING2 pendant les travaux pratiques.",
+      "Bricolage, jardinage, montage de meubles et cours particuliers de mathématiques (collège) pour plus de 30 clients.",
     ],
   },
 ];
@@ -90,7 +123,7 @@ export const education: Entry[] = [
     place: "Paris",
     points: [
       "2 ans de classe préparatoire intégrée puis 3 ans de spécialisation. Actuellement en ING4 SE (M1).",
-      "Projets : site full-stack (JavaScript, PHP), FPGA (Intel Quartus), console ATTiny, reconnaissance vocale (PyTorch).",
+      "Projets : rover ECEPILOT, Fruit Ninja sur FPGA, robot DrawBot PID, clone LinkedIn, simulation de réseaux trophiques, jeu ECECooked, mini-console ATTiny.",
     ],
   },
   {
@@ -106,9 +139,9 @@ export const education: Entry[] = [
 
 export const skills = [
   { group: "Électronique & fabrication", items: ["KiCad", "Routage PCB/PCBA", "OnShape", "SolidWorks", "Bambu Studio", "Cura", "Découpe laser Trotec"] },
-  { group: "Systèmes embarqués", items: ["C/C++", "ESP32", "ATmega328P", "FPGA (Intel Quartus)", "Multithreading", "ROS 2"] },
-  { group: "Programmation", items: ["Python", "JavaScript", "PHP", "SQL", "HTML/CSS"] },
-  { group: "Systèmes & infra", items: ["Linux (RHEL, Ubuntu)", "Docker", "Proxmox", "Ansible", "Cloudflare", "Ubiquiti", "Grafana"] },
+  { group: "Systèmes embarqués", items: ["C/C++", "ESP32", "ATmega328P", "ATTiny", "Raspberry Pi", "FPGA (VHDL, Quartus)", "ROS 2"] },
+  { group: "Programmation & web", items: ["Python", "JavaScript", "Node.js", "React", "PHP", "SQL", "HTML/CSS"] },
+  { group: "Systèmes & infra", items: ["Linux (RHEL, Ubuntu)", "Docker", "Proxmox", "Ansible", "VMware", "Cloudflare", "Tailscale", "WireGuard", "Grafana"] },
   { group: "Bases de données", items: ["PostgreSQL", "MySQL"] },
 ];
 

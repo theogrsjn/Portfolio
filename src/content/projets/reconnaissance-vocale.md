@@ -5,7 +5,7 @@ summary: Un modèle de deep learning entraîné avec PyTorch pour reconnaître d
 status: termine
 role: Projet d'école
 context: Cycle ingénieur
-order: 22
+order: 18
 kind: etudes
 category: IA
 stack: [Python, PyTorch, Traitement du signal]

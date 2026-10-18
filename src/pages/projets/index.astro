@@ -51,6 +51,6 @@ const sections = [
   .jump .pill:hover { background: var(--fg); color: var(--bg); }
   .jump .pill:hover .muted { color: inherit; }
   section[id] { scroll-margin-top: 24px; }
-  .grid > :global(*) { flex-basis: 380px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
   .section-head span { font-size: 15px; }
 </style>

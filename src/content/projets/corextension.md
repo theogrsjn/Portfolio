@@ -1,7 +1,7 @@
 ---
 title: CoreXtension
 eyebrow: Full-stack · infra · depuis 2025
-summary: Le groupe de logiciels étudiants que j'ai fondé et que j'héberge moi-même, avec un compte unique pour tous les services.
+summary: L'éditeur de 4 logiciels étudiants que j'ai fondé et que j'héberge moi-même, avec un compte unique pour tous les services.
 status: en-ligne
 statusLabel: 800+ inscrits
 role: Fondateur, développeur full-stack et administrateur
@@ -9,34 +9,36 @@ period: Septembre 2025 → aujourd'hui
 order: 3
 featured: true
 category: Logiciel
-stack: [JavaScript, PHP, PostgreSQL, OAuth2/OIDC, Docker, Extensions navigateur]
+stack: [JavaScript, Node.js, React, PHP, PostgreSQL, OAuth2/OIDC, Docker, Cloudflare]
 cover: "[Mosaïque de captures des applications]"
 visual: corextension
 facts:
   - { value: "800+", label: "utilisateurs inscrits" }
   - { value: "50+", label: "utilisateurs actifs par jour" }
-  - { value: "5", label: "sites conteneurisés et auto-hébergés" }
+  - { value: "4", label: "logiciels sous un compte unique" }
 products:
-  - { name: NoteXtension, desc: "Récupération, analyse et suivi des notes des étudiants du groupe OMNES, via une extension Chrome et Firefox et une plateforme web.", url: "https://notextension.fr" }
+  - { name: NoteXtension, desc: "Récupération, analyse et suivi des résultats académiques, via une extension navigateur et une plateforme web.", url: "https://notextension.fr" }
   - { name: LaTeXtension, desc: "Éditeur LaTeX en ligne." }
-  - { name: Émargement, desc: "Gestion des feuilles de présence." }
-  - { name: Jeux, desc: "Plateforme de jeux." }
+  - { name: WeSignXtension, desc: "Gestion de l'émargement." }
+  - { name: PlayXtension, desc: "Plateforme de jeux." }
 links:
   - { label: "corextension.fr", url: "https://corextension.fr" }
 ---
 
 ## Le point de départ
 
-En tant qu'étudiant, je voulais des outils qui n'existaient pas : suivre mes notes et mes moyennes facilement, rédiger en LaTeX sans installation, gérer l'émargement. J'ai commencé par **NoteXtension**, puis j'ai réuni ces services sous **CoreXtension**.
+En tant qu'étudiant, je voulais des outils qui n'existaient pas : suivre mes résultats facilement, rédiger en LaTeX sans installation, gérer l'émargement. J'ai commencé par **NoteXtension**, puis j'ai réuni ces services sous **CoreXtension**.
 
 ## Les produits
 
-- **NoteXtension** : une extension de navigateur (Chrome et Firefox) récupère les notes et coefficients affichés sur les plateformes de l'école. La plateforme calcule les moyennes pondérées et propose des statistiques anonymisées et des graphiques de progression.
+- **NoteXtension** : une extension de navigateur (Chrome, Firefox et Edge) récupère les notes et coefficients affichés sur les plateformes de l'école. La plateforme calcule les moyennes pondérées et propose des statistiques anonymisées et des graphiques de progression.
 - **LaTeXtension** : un éditeur LaTeX en ligne.
-- **Émargement** : la gestion des feuilles de présence.
-- **Jeux** : une plateforme de jeux.
+- **WeSignXtension** : la gestion de l'émargement.
+- **PlayXtension** : une plateforme de jeux.
 
-<!-- À compléter : une ou deux phrases de plus par produit, avec captures. -->
+## Développement complet
+
+Je développe l'ensemble : **back-end**, **front-end** et **extensions navigateur**, avec JavaScript, Node.js, React et PHP.
 
 ## Un compte unique
 
@@ -44,7 +46,7 @@ Tous les services partagent un **service d'identité OAuth2/OIDC** que j'ai mis 
 
 ## Infrastructure et sécurité
 
-- Sites **conteneurisés** avec Docker et **auto-hébergés** sur mon infrastructure.
+- Services **conteneurisés** avec Docker et **auto-hébergés** sur mon infrastructure, derrière Cloudflare.
 - Une base **PostgreSQL isolée** par service.
 - **Conformité RGPD** et travail sur le référencement (SEO).
 - Projet protégé par un **dépôt e-Soleau** auprès de l'INPI.

@@ -1,15 +1,15 @@
 ---
 title: ECE Paris H2 Racing
 eyebrow: Mécanique · CAO · 2026
-summary: Co-fondateur et responsable mécanique. Un véhicule à pile à combustible conçu en six semaines pour la finale mondiale en Suisse, 520 tours en 4 h d'endurance.
+summary: Co-fondateur et responsable mécanique. Un véhicule à l'échelle 1/10 sur pile à combustible hydrogène, conçu en 1,5 mois pour la finale mondiale en Suisse, 520 tours en 4 h d'endurance.
 status: termine
 statusLabel: 6e mondial
-role: Co-fondateur et responsable mécanique CAO
+role: Co-fondateur et responsable mécanique / CAO
 period: Mars 2026 → aujourd'hui
 order: 1
 featured: true
 category: Mécanique
-stack: [OnShape, CAO, Pile à combustible hydrogène]
+stack: [SolidWorks, OnShape, Impression 3D, Prototypage rapide, Pile à combustible hydrogène]
 cover: "[Photo plein cadre : prototype H2GP en piste]"
 image: ../../assets/projets/h2gp-finale.jpg
 imageAlt: "L'équipe ECE Paris H2 Racing célèbre devant le tableau des scores de la finale mondiale du Hydrogen Grand Prix, où l'équipe affiche 520 tours"
@@ -21,13 +21,14 @@ facts:
 
 ## Le contexte
 
-Le **Hydrogen Grand Prix** est une compétition internationale de véhicules propulsés par pile à combustible hydrogène. J'ai co-fondé l'équipe **ECE Paris H2 Racing** en mars 2026 pour participer à la finale mondiale 2026, organisée en Suisse.
+Le **Hydrogen Grand Prix** est une compétition internationale de véhicules à l'**échelle 1/10** propulsés par une pile à combustible hydrogène. J'ai co-fondé l'équipe d'étudiants ingénieurs **H2 Racing ECE Paris** en mars 2026 pour participer à la finale mondiale 2026, organisée en Suisse. C'était notre première participation.
 
 ## Mon rôle
 
-Responsable mécanique et CAO du prototype.
-
-<!-- À compléter : pièces conçues, procédés de fabrication, choix techniques. -->
+- **Conception CAO** du véhicule sous SolidWorks et OnShape.
+- **Prototypage rapide** des pièces en impression 3D, puis **intégration** de l'ensemble du véhicule.
+- **Coordination technique** de l'équipe.
+- **Recherche de sponsors** et de partenariats.
 
 ## La contrainte principale : le temps
 
