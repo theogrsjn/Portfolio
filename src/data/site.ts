@@ -28,8 +28,16 @@ export const nav = [
 ];
 
 export const stats = [
-  { value: "6", sup: "e", label: "mondial au Hydrogen Grand Prix 2026" },
+  { value: "6e", label: "place mondiale au Hydrogen Grand Prix 2026" },
   { value: "800+", label: "utilisateurs inscrits sur CoreXtension" },
+  { value: "50+", label: "utilisateurs actifs par jour" },
+];
+
+export const domains = [
+  { title: "Électronique", text: "Schémas et routage de PCB sous KiCad, prototypage et fabrication au FabLab." },
+  { title: "Embarqué", text: "C/C++ sur ESP32, ATmega et ATtiny, FPGA en VHDL, capteurs et communication sans fil." },
+  { title: "Logiciel", text: "Applications web full-stack, extensions navigateur, service d'identité OAuth2/OIDC." },
+  { title: "Infrastructure", text: "Linux, Docker, Proxmox et Ansible : j'héberge et supervise mes propres services." },
 ];
 
 export type Entry = {

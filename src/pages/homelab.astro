@@ -13,7 +13,7 @@ const layers = [
 ---
 
 <Base title="Homelab" description="L'infrastructure réseau et serveur auto-hébergée de Théo Grosjean depuis 2023 : Proxmox, Docker, VLAN, Cloudflare, Tailscale, WireGuard, Grafana.">
-  <section class="intro">
+  <section class="page-head">
     <div class="eyebrow">Homelab</div>
     <h1 class="display">Mon infrastructure</h1>
     <p class="lead">Mon laboratoire personnel depuis 2023, et l'environnement de production de mes projets : les sites CoreXtension et ce portfolio tournent dessus.</p>
@@ -49,8 +49,6 @@ const layers = [
 </Base>
 
 <style>
-  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 40px; }
-  h1 { margin: 0; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; }
   .layout { display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start; }
   .layout .prose { flex: 1 1 480px; min-width: 0; }
   .layout .prose h2:first-child { margin-top: 0; }
@@ -76,6 +74,6 @@ const layers = [
     height: 10px;
     background: var(--line);
   }
-  .lname { font-size: 20px; font-stretch: 112%; }
+  .lname { font-size: 16px; }
   .layer p { margin: 0; color: var(--text); font-size: 15px; }
 </style>

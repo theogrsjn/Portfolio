@@ -58,13 +58,11 @@ const personLd = {
   </head>
   <body>
     <a class="skip" href="#contenu">Aller au contenu</a>
-    <div class="wrap">
-      <Header />
-      <main id="contenu">
-        <slot />
-      </main>
-      <Footer />
-    </div>
+    <Header />
+    <main id="contenu" class="wrap">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 

@@ -100,14 +100,14 @@ const { Content } = await render(project);
 </Base>
 
 <style>
-  .back { display: inline-block; margin-top: 24px; font-size: 14px; color: var(--muted); text-decoration: none; }
+  .back { display: inline-block; margin-top: 28px; font-size: 13px; color: var(--muted); text-decoration: none; }
   .back:hover { color: var(--fg); }
-  .head { display: flex; flex-direction: column; gap: 20px; padding: 24px 0 40px; }
+  .head { display: flex; flex-direction: column; gap: 14px; padding: 20px 0 32px; }
   .top { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-  h1 { margin: 0; font-size: clamp(48px, 9vw, 112px); font-weight: 900; letter-spacing: -0.045em; line-height: 0.9; }
+  h1 { margin: 0; font-size: var(--fs-h1); }
 
   .layout { display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px; align-items: flex-start; }
-  .meta { flex: 1 1 280px; max-width: 100%; position: sticky; top: 24px; }
+  .meta { flex: 1 1 260px; max-width: 100%; position: sticky; top: 92px; }
   @media (max-width: 900px) { .meta { position: static; } }
   .main { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
   dl { margin: 0; display: flex; flex-direction: column; gap: 20px; }
@@ -117,15 +117,15 @@ const { Content } = await render(project);
   .pills .pill { font-size: 13px; padding: 3px 10px; }
   .links { display: flex; flex-direction: column; gap: 4px; }
 
-  .facts > :global(*) { flex-basis: 180px; }
-  .fact { font-size: clamp(36px, 4vw, 48px); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); }
+  .fact { font-size: 28px; line-height: 1.1; }
   .small { font-size: 13px; }
-  .products > :global(*) { flex-basis: 260px; }
-  .pname { font-size: 22px; font-stretch: 112%; }
+  .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+  .pname { font-size: 17px; }
   .product p { margin: 0; color: var(--text); font-size: 15px; }
 
   .gallery { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
-  .gallery h2 { margin: 0; font-size: 28px; font-stretch: 112%; }
+  .gallery h2 { margin: 0; font-size: 22px; }
   .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px; }
   figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
   figure :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-sm); }

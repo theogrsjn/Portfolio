@@ -1,45 +1,101 @@
 ---
-import { site } from "../data/site";
+import { nav, site } from "../data/site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="footer">
-  <div class="mono muted">Écrivez-moi</div>
-  <a class="mail display" href={`mailto:${site.email}`}>{site.email}</a>
-  <div class="meta mono muted">
-    <span>© {year} {site.name}</span>
-    <span class="links">
-      <a href={site.linkedin} rel="me noopener" target="_blank">LinkedIn ↗</a>
-      <a href={site.cv}>CV (PDF)</a>
-    </span>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="about">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">TG</span>
+          <span class="name">{site.name}</span>
+        </div>
+        <p>Étudiant ingénieur en systèmes embarqués à l'ECE Paris. Du circuit imprimé au serveur.</p>
+        <p class="avail"><span class="dot" aria-hidden="true"></span>{site.availability.title} · avril 2027</p>
+      </div>
+
+      <div>
+        <h2 class="col-title">Navigation</h2>
+        <ul>
+          <li><a href="/">Accueil</a></li>
+          {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="col-title">Contact</h2>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><a href={site.linkedin} rel="me noopener" target="_blank">LinkedIn ↗</a></li>
+          <li><a href={site.cv}>CV (PDF)</a></li>
+          <li class="muted">{site.location}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <span>© {year} {site.name}</span>
+      <span>Site conçu et auto-hébergé par mes soins</span>
+    </div>
   </div>
 </footer>
 
 <style>
-  .footer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .site-footer {
     margin-top: clamp(64px, 8vw, 104px);
-    padding: 40px 0 48px;
-    border-top: 1.5px solid var(--line);
+    border-top: 1px solid var(--line-soft);
+    background: var(--card);
+    font-size: var(--fs-small);
   }
-  .mono { font-size: 14px; }
-  .mail {
-    font-size: clamp(30px, 6vw, 56px);
-    color: var(--fg);
-    text-decoration: none;
-    overflow-wrap: anywhere;
+  .cols {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    padding: 48px 0 40px;
   }
-  .mail:hover { color: var(--accent); }
-  .meta {
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .mark {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--fg);
+    color: var(--card);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 110%;
+    font-size: 13px;
+  }
+  .name { font-weight: 600; font-size: 15px; }
+  .about p { margin: 0 0 10px; color: var(--text); max-width: 40ch; }
+  .avail { display: flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok-fg); }
+  .col-title {
+    margin: 0 0 12px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  ul a { color: var(--text); text-decoration: none; overflow-wrap: anywhere; }
+  ul a:hover { color: var(--fg); text-decoration: underline; }
+  .bottom {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 12px;
+    gap: 8px 24px;
+    padding: 20px 0 28px;
+    border-top: 1px solid var(--line-soft);
+    color: var(--muted);
     font-size: 13px;
   }
-  .links { display: flex; gap: 20px; }
-  .links a { color: var(--muted); }
-  .links a:hover { color: var(--fg); }
+  @media (max-width: 760px) {
+    .cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .about { grid-column: 1 / -1; }
+  }
 </style>

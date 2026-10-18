@@ -9,7 +9,7 @@ const blocks: { title: string; entries: Entry[] }[] = [
 ---
 
 <Base title="Parcours" description="Expériences, formation et compétences de Théo Grosjean, étudiant ingénieur en systèmes embarqués.">
-  <section class="intro">
+  <section class="page-head">
     <div class="eyebrow">Parcours</div>
     <h1 class="display">Expériences et formation</h1>
     <div class="actions">
@@ -57,8 +57,6 @@ const blocks: { title: string; entries: Entry[] }[] = [
 </Base>
 
 <style>
-  .intro { display: flex; flex-direction: column; gap: 20px; padding: clamp(32px, 6vw, 64px) 0 8px; }
-  h1 { margin: 0; font-size: clamp(38px, 7vw, 88px); font-weight: 900; letter-spacing: -0.04em; }
   .actions { display: flex; gap: 12px; }
   .timeline { list-style: none; margin: 0; padding: 0; }
   .timeline > li {
@@ -70,12 +68,12 @@ const blocks: { title: string; entries: Entry[] }[] = [
   }
   .period { flex: 0 0 220px; font-size: 14px; padding-top: 4px; }
   .content { flex: 1 1 420px; min-width: 0; }
-  h3 { margin: 0; font-size: 21px; }
+  h3 { margin: 0; font-size: 18px; font-weight: 600; }
   .place { font-weight: 400; }
   .role { font-weight: 500; color: var(--accent); margin-top: 2px; }
   .content ul { margin: 10px 0 0; padding-left: 1.1em; color: var(--text); }
   .content li { margin: 4px 0; }
   .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
   .pills { display: flex; flex-wrap: wrap; gap: 8px; }
-  .lang { font-size: 28px; font-stretch: 112%; }
+  .lang { font-size: 18px; }
 </style>

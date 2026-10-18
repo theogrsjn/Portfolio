@@ -2,80 +2,162 @@
 import { getCollection } from "astro:content";
 import Base from "../layouts/Base.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { site, stats } from "../data/site";
+import { site, stats, domains, experience } from "../data/site";
 
-const projects = (await getCollection("projets", (p) => p.data.featured)).sort(
-  (a, b) => a.data.order - b.data.order,
-);
-const [lead, ...rest] = projects;
+const all = await getCollection("projets");
+const featured = all.filter((p) => p.data.featured).sort((a, b) => a.data.order - b.data.order);
+const studyCount = all.filter((p) => p.data.kind === "etudes").length;
+const figures = [...stats, { value: String(all.length), label: "projets présentés sur ce site" }];
+const recent = experience.slice(0, 4);
 ---
 
 <Base>
   <section class="hero">
-    <h1 class="display name">Théo<br />Grosjean<span>.</span></h1>
-    <div class="hero-foot">
-      <p class="lead">Étudiant ingénieur en systèmes embarqués. Je conçois du PCB jusqu'au serveur.</p>
+    <div class="intro">
+      <span class="status"><span class="dot" aria-hidden="true"></span>{site.availability.title} · avril 2027</span>
+      <h1 class="display">Théo Grosjean</h1>
+      <p class="subtitle">Étudiant ingénieur en systèmes embarqués à l'ECE Paris</p>
+      <p class="lead">
+        Je conçois des systèmes complets, du circuit imprimé au serveur en production : électronique, code embarqué,
+        applications web et infrastructure. Je recherche un stage de 4 à 5 mois à partir d'avril 2027.
+      </p>
       <div class="actions">
-        <a class="btn btn--solid" href={site.cv}>Télécharger le CV</a>
-        <a class="btn" href={site.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+        <a class="btn btn--solid" href="/projets/">Voir mes projets</a>
+        <a class="btn" href={site.cv}>Télécharger le CV</a>
       </div>
+    </div>
+
+    <aside class="card facts" aria-label="Chiffres clés">
+      <div class="eyebrow">En bref</div>
+      <dl>
+        {figures.map((f) => (
+          <div>
+            <dt class="display">{f.value}</dt>
+            <dd>{f.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </aside>
+  </section>
+
+  <section aria-labelledby="domaines">
+    <div class="section-head">
+      <h2 id="domaines" class="display">Ce que je fais</h2>
+    </div>
+    <div class="domains">
+      {domains.map((d) => (
+        <div class="card domain">
+          <h3>{d.title}</h3>
+          <p>{d.text}</p>
+        </div>
+      ))}
     </div>
   </section>
 
-  <div class="row stats">
-    {stats.map((s) => (
-      <div class="card">
-        <div class="display stat">{s.value}{s.sup && <sup>{s.sup}</sup>}</div>
-        <div class="mono muted label">{s.label}</div>
-      </div>
-    ))}
-    <a class="card card--accent avail" href="/contact/">
-      <div class="display avail-title">{site.availability.title}</div>
-      <p>{site.availability.detail}</p>
-    </a>
-  </div>
-
-  <div class="section-head">
-    <h2 class="display">Projets</h2>
-    <a href="/projets/">Tous les projets →</a>
-  </div>
-
-  <div class="projects">
-    {lead && <ProjectCard project={lead} wide />}
-    <div class="row">
-      {rest.map((p) => <ProjectCard project={p} />)}
+  <section aria-labelledby="projets">
+    <div class="section-head">
+      <h2 id="projets" class="display">Projets phares</h2>
+      <a href="/projets/">Tous les projets →</a>
     </div>
-  </div>
+    <div class="grid-cards">
+      {featured.map((p) => <ProjectCard project={p} />)}
+    </div>
+    <p class="more muted">
+      Et {studyCount} projets d'études : rover piloté en Wi-Fi, Fruit Ninja sur FPGA, interface tangible…
+      <a href="/projets/#etudes">Les découvrir</a>
+    </p>
+  </section>
+
+  <section aria-labelledby="parcours">
+    <div class="section-head">
+      <h2 id="parcours" class="display">Parcours récent</h2>
+      <a href="/parcours/">Parcours complet →</a>
+    </div>
+    <ol class="timeline">
+      {recent.map((e) => (
+        <li>
+          <span class="mono muted period">{e.period}</span>
+          <span class="what"><strong>{e.org}</strong> · {e.title}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="card cta">
+    <div>
+      <h2 class="display">Un stage en systèmes embarqués à proposer ?</h2>
+      <p>{site.availability.detail}. {site.availability.sectors}</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn--solid" href="/contact/">Me contacter</a>
+      <a class="btn" href={site.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+    </div>
+  </section>
 </Base>
 
 <style>
-  .hero { display: flex; flex-direction: column; gap: 32px; padding: clamp(32px, 6vw, 56px) 0 40px; }
-  .name {
-    margin: 0;
-    font-weight: 900;
-    font-size: clamp(64px, 11.5vw, 152px);
-    line-height: 0.88;
-    letter-spacing: -0.045em;
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+    padding: clamp(40px, 7vw, 88px) 0 clamp(16px, 3vw, 32px);
   }
-  .name span { color: var(--accent); }
-  .hero-foot {
+  .intro { display: flex; flex-direction: column; gap: 16px; }
+  .status {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border: 1px solid var(--line-soft);
+    border-radius: 999px;
+    background: var(--card);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok-fg); }
+  h1 { margin: 0; font-size: var(--fs-hero); line-height: 1.05; }
+  .subtitle { margin: 0; font-size: var(--fs-h2); font-weight: 500; color: var(--text); line-height: 1.3; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+
+  .facts dl { margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .facts dt { font-size: 30px; line-height: 1.1; }
+  .facts dd { margin: 4px 0 0; font-size: 13px; color: var(--muted); line-height: 1.4; }
+
+  .domains { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+  .domain h3 { margin: 0; font-size: 17px; }
+  .domain p { margin: 0; font-size: 15px; color: var(--text); }
+
+  .more { margin: 20px 0 0; font-size: 15px; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline li {
     display: flex;
     flex-wrap: wrap;
-    gap: 32px 40px;
-    align-items: flex-end;
-    justify-content: space-between;
+    gap: 4px 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line-soft);
   }
-  .hero-foot .lead { flex: 1 1 480px; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .period { flex: 0 0 200px; font-size: 13px; padding-top: 2px; }
+  .what { flex: 1 1 360px; min-width: 0; }
+  .what strong { font-weight: 600; }
 
-  .stat { font-size: clamp(48px, 6vw, 64px); }
-  .stat sup { font-size: 0.45em; }
-  .label { font-size: 14px; }
-  .avail { text-decoration: none; }
-  .avail:hover { color: var(--on-accent); filter: brightness(1.08); }
-  .avail-title { font-size: 28px; line-height: 1.1; letter-spacing: -0.02em; }
-  .avail p { margin: 0; font-size: 15px; }
+  .cta {
+    margin-top: clamp(48px, 6vw, 80px);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px 32px;
+    padding: clamp(24px, 3vw, 36px);
+  }
+  .cta > div:first-child { flex: 1 1 420px; min-width: 0; }
+  .cta h2 { margin: 0 0 6px; font-size: var(--fs-h2); }
+  .cta p { margin: 0; color: var(--text); font-size: 15px; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 
-  .projects { display: flex; flex-direction: column; gap: 16px; }
-  .projects .row > :global(*) { flex-basis: 420px; }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: minmax(0, 1fr); }
+  }
 </style>

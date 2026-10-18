@@ -1,4 +1,4 @@
-/* Direction « I · Éditorial + cartes » : grande typographie large, cartes blanches sur fond gris clair. */
+/* Direction « éditorial + cartes » : fond gris clair, cartes blanches, titres Archivo légèrement élargis. */
 :root {
   --bg: #edefec;
   --card: #ffffff;
@@ -6,7 +6,7 @@
   --text: #3c4044;
   --muted: #5e6266;
   --line: #101113;
-  --line-soft: #cdd1cf;
+  --line-soft: #d6d9d7;
   --accent: #1f45e6;
   --accent-hover: #1532a8;
   --on-accent: #ffffff;
@@ -18,14 +18,25 @@
   --warn-fg: #7a4b00;
   --ok-bg: #dff3e6;
   --ok-fg: #17532c;
+  --header-bg: rgb(237 239 236 / 0.85);
 
   --font-display: "Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Archivo Variable", "Archivo", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  --radius: 20px;
-  --radius-sm: 12px;
-  --max: 1280px;
+  /* échelle typographique */
+  --fs-hero: clamp(40px, 5.4vw, 64px);
+  --fs-h1: clamp(32px, 4vw, 46px);
+  --fs-h2: clamp(22px, 2.2vw, 28px);
+  --fs-h3: 20px;
+  --fs-lead: clamp(17px, 1.5vw, 19px);
+  --fs-body: 16px;
+  --fs-small: 14px;
+  --fs-xs: 12px;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --max: 1200px;
   --gutter: clamp(16px, 4vw, 32px);
   color-scheme: light;
 }
@@ -33,12 +44,12 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0f1112;
-    --card: #191c1e;
+    --card: #181b1d;
     --fg: #eceeeb;
     --text: #c5c9cc;
     --muted: #9aa0a6;
     --line: #eceeeb;
-    --line-soft: #2e3337;
+    --line-soft: #2a2f33;
     --accent: #8fa5ff;
     --accent-hover: #b6c4ff;
     --on-accent: #0f1112;
@@ -50,17 +61,18 @@
     --warn-fg: #f5cf8a;
     --ok-bg: #16301f;
     --ok-fg: #9fe0b5;
+    --header-bg: rgb(15 17 18 / 0.85);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #0f1112;
-  --card: #191c1e;
+  --card: #181b1d;
   --fg: #eceeeb;
   --text: #c5c9cc;
   --muted: #9aa0a6;
   --line: #eceeeb;
-  --line-soft: #2e3337;
+  --line-soft: #2a2f33;
   --accent: #8fa5ff;
   --accent-hover: #b6c4ff;
   --on-accent: #0f1112;
@@ -72,18 +84,19 @@
   --warn-fg: #f5cf8a;
   --ok-bg: #16301f;
   --ok-fg: #9fe0b5;
+  --header-bg: rgb(15 17 18 / 0.85);
   color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  font-size: 17px;
-  line-height: 1.6;
+  font-size: var(--fs-body);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; height: auto; display: block; }
@@ -102,14 +115,14 @@ p { text-wrap: pretty; }
 /* Typographie */
 .display {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-stretch: 125%;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  font-weight: 700;
+  font-stretch: 108%;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
 }
 .eyebrow {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: var(--fs-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent);
@@ -117,26 +130,36 @@ p { text-wrap: pretty; }
 .mono { font-family: var(--font-mono); }
 .muted { color: var(--muted); }
 .lead {
-  font-size: clamp(22px, 2.6vw, 30px);
-  line-height: 1.25;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  max-width: 30ch;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 62ch;
   margin: 0;
 }
+
+/* En-tête de page commun */
+.page-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(40px, 6vw, 72px) 0 clamp(28px, 4vw, 44px);
+}
+.page-head h1 { margin: 0; font-size: var(--fs-h1); }
+.page-head .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
 
 /* Cartes */
 .card {
   background: var(--card);
+  border: 1px solid var(--line-soft);
   border-radius: var(--radius);
-  padding: clamp(20px, 3vw, 32px);
+  padding: clamp(20px, 2.4vw, 28px);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
 }
-.card--accent { background: var(--accent); color: var(--on-accent); }
-.card--accent p { color: inherit; opacity: 0.85; }
+.card--accent { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.card--accent p { color: inherit; opacity: 0.88; }
 
 /* Boutons */
 .btn {
@@ -144,36 +167,38 @@ p { text-wrap: pretty; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 48px;
-  padding: 0 24px;
-  border-radius: 999px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 15px;
   text-decoration: none;
-  border: 1.5px solid var(--fg);
+  border: 1px solid var(--line-soft);
   color: var(--fg);
-  background: transparent;
+  background: var(--card);
   cursor: pointer;
   font-family: inherit;
-  transition: background-color 0.15s, color 0.15s;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
-.btn:hover { background: var(--fg); color: var(--bg); }
-.btn--solid { background: var(--fg); color: var(--bg); }
+.btn:hover { border-color: var(--fg); color: var(--fg); }
+.btn--solid { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 .btn--solid:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn--sm { min-height: 36px; padding: 0 14px; font-size: 14px; border-radius: 8px; }
 
 .pill {
   display: inline-flex;
-  padding: 5px 14px;
-  border: 1px solid var(--line);
+  padding: 3px 11px;
+  border: 1px solid var(--line-soft);
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
+  color: var(--text);
 }
 .tag {
   display: inline-flex;
   font-family: var(--font-mono);
-  font-size: 12px;
-  padding: 3px 10px;
+  font-size: var(--fs-xs);
+  padding: 2px 9px;
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -188,44 +213,51 @@ p { text-wrap: pretty; }
   align-items: flex-end;
   padding: 14px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: var(--fs-xs);
   color: var(--muted);
   min-height: 200px;
 }
 
 .row { display: flex; flex-wrap: wrap; gap: 16px; }
 .row > * { flex: 1 1 280px; }
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; }
 
 .section-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1.5px solid var(--line);
-  margin-top: clamp(48px, 7vw, 88px);
-  margin-bottom: 16px;
+  gap: 8px 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line-soft);
+  margin-top: clamp(48px, 6vw, 80px);
+  margin-bottom: 24px;
 }
-.section-head h2 { margin: 0; font-size: clamp(30px, 4vw, 40px); }
+.section-head h2 { margin: 0; font-size: var(--fs-h2); }
+.section-head p, .section-head span { margin: 0; color: var(--muted); font-size: var(--fs-small); }
+.section-head a { font-size: var(--fs-small); font-weight: 600; text-decoration: none; }
 
 /* Contenu long (pages projet) */
 .prose { max-width: 68ch; color: var(--text); }
 .prose h2 {
   font-family: var(--font-display);
-  font-stretch: 112%;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-stretch: 108%;
+  font-weight: 700;
+  letter-spacing: -0.015em;
   color: var(--fg);
-  font-size: 28px;
-  line-height: 1.1;
-  margin: 48px 0 12px;
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 40px 0 10px;
 }
-.prose h3 { color: var(--fg); font-size: 20px; margin: 32px 0 8px; }
-.prose ul { padding-left: 1.2em; }
+.prose h3 { color: var(--fg); font-size: 17px; margin: 28px 0 6px; }
+.prose ul, .prose ol { padding-left: 1.2em; }
 .prose li { margin: 6px 0; }
-.prose strong { color: var(--fg); }
+.prose strong { color: var(--fg); font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* pas de grand espace entre l'en-tête de page et la première section */
+.page-head + .section-head,
+.page-head + section > .section-head:first-child { margin-top: 0; }
