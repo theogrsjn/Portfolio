@@ -88,7 +88,9 @@ const { Content } = await render(project);
           <div class="shots">
             {d.gallery.map((g) => (
               <figure>
-                <Image src={g.src} alt={g.alt} widths={[480, 720, 960]} sizes="(min-width: 1000px) 30vw, 100vw" format="webp" loading="lazy" />
+                <a href={g.src.src} target="_blank" rel="noopener" aria-label={`Ouvrir l'image en grand : ${g.alt}`}>
+                  <Image src={g.src} alt={g.alt} widths={[480, 720, 960]} sizes="(min-width: 1000px) 30vw, 100vw" format="webp" loading="lazy" />
+                </a>
                 <figcaption class="muted">{g.alt}</figcaption>
               </figure>
             ))}
@@ -128,7 +130,7 @@ const { Content } = await render(project);
   .gallery h2 { margin: 0; font-size: 22px; }
   .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px; }
   figure { margin: 0; display: flex; flex-direction: column; gap: 8px; }
-  figure :global(img) { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-sm); }
+  figure :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: var(--render-bg); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); }
   figcaption { font-size: 14px; }
   .prose :global(blockquote) {
     margin: 0 0 24px;

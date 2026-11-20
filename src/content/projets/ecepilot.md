@@ -1,7 +1,7 @@
 ---
 title: ECEPILOT
 eyebrow: Robotique · embarqué · en cours
-summary: Un rover piloté par une télécommande que nous avons conçue, avec un LiDAR qui déclenche l'arrêt d'urgence. Le semestre 1 est terminé ; le semestre 2 passera à la navigation sous ROS 2.
+summary: Un rover piloté par une télécommande que nous avons conçue, avec un LiDAR qui déclenche l'arrêt d'urgence. Le semestre 1 est terminé ; au semestre 2, nous le rendons autonome avec ROS 2 sous Ubuntu 22.04.
 status: en-cours
 statusLabel: Semestre 2 à venir
 role: Membre d'une équipe de 4
@@ -10,7 +10,7 @@ context: Projet technique ING4 Systèmes embarqués · ECE Paris
 order: 10
 kind: etudes
 category: Robotique
-stack: [ESP32, ATmega328P, ESP-01S, KiCad, LiDAR, IMU, Wi-Fi, Python, Impression 3D]
+stack: [ESP32, ATmega328P, ESP-01S, KiCad, LiDAR, IMU, Wi-Fi, Python, Impression 3D, ROS 2, Ubuntu 22.04]
 cover: "[Photo : le rover et la télécommande sur PCB]"
 image: ../../assets/projets/ecepilot-mallette.jpg
 imageAlt: "Le rover avec son LiDAR et la télécommande rangés dans leur mallette de transport"
@@ -20,7 +20,7 @@ gallery:
 facts:
   - { value: "2", label: "cœurs de l'ESP32 exploités en parallèle" }
   - { value: "1", label: "PCB de télécommande conçu et fabriqué" }
-  - { value: "S2", label: "navigation sous ROS 2, à venir" }
+  - { value: "S2", label: "autonomie avec ROS 2 sous Ubuntu 22.04" }
 ---
 
 ## Le projet
@@ -48,8 +48,12 @@ Le cahier des charges imposait un **PCB simple face** de 100 × 100 mm maximum, 
 - **Vitesse** : une centrale inertielle (IMU) embarquée mesure la vitesse du rover, affichée sur l'écran OLED de la télécommande.
 - **Qualité du lien** : la force du signal Wi-Fi s'affiche sur l'écran ; la LED est bleue pendant la connexion et verte une fois connectée.
 
-## Semestre 2 : vers l'autonomie avec ROS 2 (à venir)
+## Semestre 2 : rendre le rover autonome avec ROS 2
 
-Le second semestre ajoutera la **perception** et le **calcul de trajectoire** sous **ROS 2**. Cette phase n'a pas encore commencé.
+Au second semestre, le rover ne dépend plus de la télécommande : il doit percevoir son environnement et choisir lui-même sa trajectoire. Nous utilisons pour cela **ROS 2** sous **Ubuntu 22.04**, le framework de référence en robotique.
+
+- **La perception** : les données du LiDAR et de l'IMU sont publiées sous forme de messages ROS 2, pour construire une image de l'environnement du rover.
+- **Le calcul de trajectoire** : à partir de cette perception, le rover détermine le chemin à suivre et évite les obstacles.
+- **Le pilotage** : les consignes calculées sont envoyées aux moteurs, à la place des commandes de la télécommande.
 
 <!-- À compléter : résultats des soutenances, temps au chrono, photos du PCB et du rover, ta part précise dans l'équipe. -->
